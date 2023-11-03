@@ -1,4 +1,4 @@
-package dominio;
+package Model;
 
 import java.io.*;
 import java.util.Formatter;
