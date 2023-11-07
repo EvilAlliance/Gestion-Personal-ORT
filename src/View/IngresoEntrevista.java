@@ -57,7 +57,7 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         jLabelPuntaje.setText("Puntaje");
 
         jLabelIntrevistador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelIntrevistador.setText("Intrevistador");
+        jLabelIntrevistador.setText("Entrevistador");
 
         jLabelPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelPostulante.setText("Postulante");
@@ -108,7 +108,6 @@ public class IngresoEntrevista extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelIngresoEntrevista)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
