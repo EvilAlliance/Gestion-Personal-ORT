@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.Controller;
 import java.awt.Color;
 
 /**
@@ -29,13 +30,16 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelMenu = new javax.swing.JLabel();
-        jButtonRegistroTematica = new javax.swing.JButton();
-        jButtonAltaPostulante = new javax.swing.JButton();
-        jButtonConsultaPuesto = new javax.swing.JButton();
-        jButtonHistoriaPostulante = new javax.swing.JButton();
+        jButtonTematica = new javax.swing.JButton();
+        jButtonPostulante = new javax.swing.JButton();
+        jButtonPuesto = new javax.swing.JButton();
+        jButtonEvaluador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
+        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -45,51 +49,64 @@ public class Menu extends javax.swing.JFrame {
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelMenu.setText("Menu");
 
-        jButtonRegistroTematica.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButtonRegistroTematica.setText("Registro de Tematica");
+        jButtonTematica.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonTematica.setText("Tematica");
+        jButtonTematica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTematicaMouseClicked(evt);
+            }
+        });
 
-        jButtonAltaPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButtonAltaPostulante.setText("Alta Postulante");
+        jButtonPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonPostulante.setText("Postulante");
+        jButtonPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPostulanteMouseClicked(evt);
+            }
+        });
 
-        jButtonConsultaPuesto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButtonConsultaPuesto.setText("Consulta de Puesto");
+        jButtonPuesto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonPuesto.setText("Puesto");
+        jButtonPuesto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPuestoMouseClicked(evt);
+            }
+        });
 
-        jButtonHistoriaPostulante.setText("Historial de Postulante");
+        jButtonEvaluador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonEvaluador.setText("Registro de Evaluador");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonHistoriaPostulante)
-                    .addComponent(jButtonConsultaPuesto)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(111, 111, 111)
-                            .addComponent(jLabelMenu))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(62, 62, 62)
-                            .addComponent(jButtonRegistroTematica))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(79, 79, 79)
-                            .addComponent(jButtonAltaPostulante))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonPostulante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTematica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelMenu)
+                .addGap(117, 117, 117))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelMenu)
-                .addGap(34, 34, 34)
-                .addComponent(jButtonRegistroTematica)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAltaPostulante)
+                .addComponent(jButtonTematica)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonConsultaPuesto)
+                .addComponent(jButtonPuesto)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonHistoriaPostulante)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jButtonPostulante)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEvaluador)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,11 +116,26 @@ public class Menu extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_formWindowOpened
 
+    private void jButtonTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTematicaMouseClicked
+        this.setVisible(false);
+        Controller.initMenuTematica();
+    }//GEN-LAST:event_jButtonTematicaMouseClicked
+
+    private void jButtonPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPuestoMouseClicked
+        this.setVisible(false);
+        Controller.initMenuPuesto();
+    }//GEN-LAST:event_jButtonPuestoMouseClicked
+
+    private void jButtonPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPostulanteMouseClicked
+        this.setVisible(false);
+        Controller.initMenuPostulante();
+    }//GEN-LAST:event_jButtonPostulanteMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAltaPostulante;
-    private javax.swing.JButton jButtonConsultaPuesto;
-    private javax.swing.JButton jButtonHistoriaPostulante;
-    private javax.swing.JButton jButtonRegistroTematica;
+    private javax.swing.JButton jButtonEvaluador;
+    private javax.swing.JButton jButtonPostulante;
+    private javax.swing.JButton jButtonPuesto;
+    private javax.swing.JButton jButtonTematica;
     private javax.swing.JLabel jLabelMenu;
     // End of variables declaration//GEN-END:variables
 }

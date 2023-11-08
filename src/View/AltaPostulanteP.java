@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.Controller;
 import java.awt.Color;
 
 /**
@@ -49,10 +50,13 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         jButtonSiguiente = new javax.swing.JButton();
         jTextFieldNombre = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alta Postulante");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -110,8 +114,18 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         jRadioButtonMixto.setText("Mixto");
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMouseClicked(evt);
+            }
+        });
 
         jButtonSiguiente.setText("Siguiente");
+        jButtonSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSiguienteMouseClicked(evt);
+            }
+        });
 
         jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
@@ -212,7 +226,23 @@ public class AltaPostulanteP extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.getContentPane().setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_formWindowOpened
-   
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Controller.initMenuPostulante();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
+        Controller.diposeAltaPostulante();
+        Controller.initMenuPostulante();
+    }//GEN-LAST:event_jButtonCancelarMouseClicked
+
+    private void jButtonSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSiguienteMouseClicked
+        if (true) {
+            this.setVisible(false);
+            Controller.nextAltaPostulante();
+        }
+    }//GEN-LAST:event_jButtonSiguienteMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupFormato;
     private javax.swing.JButton jButtonCancelar;
