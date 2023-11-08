@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.Controller;
 import java.awt.Color;
 
 /**
@@ -42,14 +43,17 @@ public class AltaPostulanteS extends javax.swing.JFrame {
         jListExperiencia = new javax.swing.JList<>();
         jSeparator = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alta Postulante");
+        setAlwaysOnTop(true);
         setAutoRequestFocus(false);
         setMinimumSize(new java.awt.Dimension(374, 247));
-        setPreferredSize(new java.awt.Dimension(374, 300));
         setResizable(false);
         setSize(new java.awt.Dimension(374, 280));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -69,8 +73,18 @@ public class AltaPostulanteS extends javax.swing.JFrame {
         jLabelExperiencia.setText("Experiencia");
 
         jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegistrarMouseClicked(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMouseClicked(evt);
+            }
+        });
 
         jButtonEliminar.setText("Eliminar");
 
@@ -116,9 +130,9 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(jScrollPaneExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRegistrar)
+                        .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar)))
+                        .addComponent(jButtonRegistrar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -158,6 +172,22 @@ public class AltaPostulanteS extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.getContentPane().setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
+        this.setVisible(false);
+        Controller.initAltaPostulante();
+    }//GEN-LAST:event_jButtonCancelarMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Controller.initMenuPostulante();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
+        if (true) {
+            Controller.diposeAltaPostulante();
+        }
+    }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonCancelar;

@@ -5,6 +5,7 @@
 package View;
 
 import Controller.Controller;
+import java.awt.Color;
 
 /**
  *
@@ -42,6 +43,9 @@ public class MenuTematica extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -50,9 +54,19 @@ public class MenuTematica extends javax.swing.JFrame {
 
         jButtonRegistroTematica.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonRegistroTematica.setText("Registro de Tematica");
+        jButtonRegistroTematica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegistroTematicaMouseClicked(evt);
+            }
+        });
 
         jButtonConsultaTematica.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonConsultaTematica.setText("Consulta por Tematica");
+        jButtonConsultaTematica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonConsultaTematicaMouseClicked(evt);
+            }
+        });
 
         jButtonAtras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAtras.setText("Atras");
@@ -101,6 +115,20 @@ public class MenuTematica extends javax.swing.JFrame {
         this.setVisible(false);
         Controller.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.getContentPane().setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonRegistroTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistroTematicaMouseClicked
+        this.setVisible(false);
+        Controller.initRegistroTematica();
+    }//GEN-LAST:event_jButtonRegistroTematicaMouseClicked
+
+    private void jButtonConsultaTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultaTematicaMouseClicked
+        this.setVisible(false);
+        Controller.initConsultaTematica();
+    }//GEN-LAST:event_jButtonConsultaTematicaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;

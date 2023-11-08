@@ -5,6 +5,7 @@
 package View;
 
 import Controller.Controller;
+import java.awt.Color;
 
 /**
  *
@@ -44,6 +45,9 @@ public class MenuPostulante extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -53,9 +57,19 @@ public class MenuPostulante extends javax.swing.JFrame {
 
         jButtonAltaPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAltaPostulante.setText("Alta de Postulante");
+        jButtonAltaPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAltaPostulanteMouseClicked(evt);
+            }
+        });
 
         jButtonBajaPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonBajaPostulante.setText("Baja de Postulante");
+        jButtonBajaPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBajaPostulanteMouseClicked(evt);
+            }
+        });
 
         jButtonAtras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAtras.setText("Atras");
@@ -67,9 +81,19 @@ public class MenuPostulante extends javax.swing.JFrame {
 
         jButtonHistorialPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonHistorialPostulante.setText("Historial Postulante");
+        jButtonHistorialPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonHistorialPostulanteMouseClicked(evt);
+            }
+        });
 
         jButtonIngresoEntrevista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonIngresoEntrevista.setText("Ingreso de Entrevista");
+        jButtonIngresoEntrevista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonIngresoEntrevistaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +139,30 @@ public class MenuPostulante extends javax.swing.JFrame {
         this.setVisible(false);
         Controller.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
+
+    private void jButtonAltaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAltaPostulanteMouseClicked
+        this.setVisible(false);
+        Controller.initAltaPostulante();
+    }//GEN-LAST:event_jButtonAltaPostulanteMouseClicked
+
+    private void jButtonBajaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBajaPostulanteMouseClicked
+        this.setVisible(false);
+        Controller.initBajaPostulante();
+    }//GEN-LAST:event_jButtonBajaPostulanteMouseClicked
+
+    private void jButtonHistorialPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHistorialPostulanteMouseClicked
+        this.setVisible(false);
+        Controller.initHistoriaPostulante();
+    }//GEN-LAST:event_jButtonHistorialPostulanteMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.getContentPane().setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonIngresoEntrevistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresoEntrevistaMouseClicked
+        this.setVisible(false);
+        Controller.initIngresoEntrevista();
+    }//GEN-LAST:event_jButtonIngresoEntrevistaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAltaPostulante;

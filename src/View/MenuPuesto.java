@@ -5,6 +5,7 @@
 package View;
 
 import Controller.Controller;
+import java.awt.Color;
 
 /**
  *
@@ -42,6 +43,9 @@ public class MenuPuesto extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -51,9 +55,19 @@ public class MenuPuesto extends javax.swing.JFrame {
 
         jButtonRegistroPuesto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonRegistroPuesto.setText("Registro de Puesto");
+        jButtonRegistroPuesto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegistroPuestoMouseClicked(evt);
+            }
+        });
 
         jButtonConsultaPuesto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonConsultaPuesto.setText("Consulta por Puesto");
+        jButtonConsultaPuesto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonConsultaPuestoMouseClicked(evt);
+            }
+        });
 
         jButtonAtras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAtras.setText("Atras");
@@ -68,7 +82,7 @@ public class MenuPuesto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonConsultaPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonRegistroPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,6 +115,20 @@ public class MenuPuesto extends javax.swing.JFrame {
         this.setVisible(false);
         Controller.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.getContentPane().setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonRegistroPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistroPuestoMouseClicked
+        this.setVisible(false);
+        Controller.initRegistroPuesto();
+    }//GEN-LAST:event_jButtonRegistroPuestoMouseClicked
+
+    private void jButtonConsultaPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultaPuestoMouseClicked
+        this.setVisible(false);
+        Controller.initConsultaPuesto();
+    }//GEN-LAST:event_jButtonConsultaPuestoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
