@@ -75,6 +75,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonEvaluador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonEvaluador.setText("Registro de Evaluador");
+        jButtonEvaluador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEvaluadorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +135,11 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         Controller.initMenuPostulante();
     }//GEN-LAST:event_jButtonPostulanteMouseClicked
+
+    private void jButtonEvaluadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEvaluadorMouseClicked
+        this.setVisible(false);
+        Controller.initRegistroEvaluador();
+}//GEN-LAST:event_jButtonEvaluadorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEvaluador;

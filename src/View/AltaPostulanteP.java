@@ -103,13 +103,16 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         jTextFieldLinkedin.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldLinkedin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
 
+        jRadioButtonRemoto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonRemoto);
         jRadioButtonRemoto.setText("Remoto");
         jRadioButtonRemoto.setToolTipText("");
 
+        jRadioButtonPresencial.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonPresencial);
         jRadioButtonPresencial.setText("Presencial");
 
+        jRadioButtonMixto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonMixto);
         jRadioButtonMixto.setText("Mixto");
 
@@ -170,10 +173,10 @@ public class AltaPostulanteP extends javax.swing.JFrame {
                             .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldDireccion))
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCedula)
-                            .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldCedula, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
@@ -232,16 +235,25 @@ public class AltaPostulanteP extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
-        Controller.diposeAltaPostulante();
-        Controller.initMenuPostulante();
+        this.dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void jButtonSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSiguienteMouseClicked
         if (true) {
             this.setVisible(false);
-            Controller.nextAltaPostulante();
+            Controller.nextAltaPostulante(false);
         }
     }//GEN-LAST:event_jButtonSiguienteMouseClicked
+
+    public void reset() {
+        this.jTextFieldCedula.setText("");
+        this.jTextFieldDireccion.setText("");
+        this.jTextFieldLinkedin.setText("");
+        this.jTextFieldMail.setText("");
+        this.jTextFieldNombre.setText("");
+        this.jTextFieldTelefono.setText("");
+        this.buttonGroupFormato.clearSelection();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupFormato;

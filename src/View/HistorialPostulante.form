@@ -71,9 +71,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextNombre" max="32767" attributes="0"/>
-                                  <Component id="jTextCedula" max="32767" attributes="0"/>
-                                  <Component id="jTextDireccion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldNombre" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCedula" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldDireccion" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -86,10 +86,10 @@
                               </Group>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextTelefono" max="32767" attributes="0"/>
-                                  <Component id="jTextMail" max="32767" attributes="0"/>
-                                  <Component id="jTextLinkedin" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFormato" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldTelefono" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldMail" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldLinkedin" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldFormato" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPaneExperiencia" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -99,7 +99,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabelBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextBuscar" min="-2" pref="305" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBuscar" min="-2" pref="305" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -129,39 +129,39 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelPostulantes" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelCedula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextCedula" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCedula" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelMail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldMail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelLinkedin" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextLinkedin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldLinkedin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelFormato" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFormato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldFormato" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -176,7 +176,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonResetear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -252,12 +252,12 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextBuscar"/>
+          <ComponentRef name="jTextFieldBuscar"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextBuscar">
+    <Component class="javax.swing.JTextField" name="jTextFieldBuscar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ec" green="ec" red="ec" type="rgb"/>
@@ -336,7 +336,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextNombre"/>
+          <ComponentRef name="jTextFieldNombre"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre:"/>
         <Property name="name" type="java.lang.String" value="jLabelNombre" noResource="true"/>
@@ -348,7 +348,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextCedula"/>
+          <ComponentRef name="jTextFieldCedula"/>
         </Property>
         <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
       </Properties>
@@ -359,7 +359,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextDireccion"/>
+          <ComponentRef name="jTextFieldDireccion"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
       </Properties>
@@ -370,7 +370,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextTelefono"/>
+          <ComponentRef name="jTextFieldTelefono"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
       </Properties>
@@ -381,7 +381,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextMail"/>
+          <ComponentRef name="jTextFieldMail"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mail:"/>
       </Properties>
@@ -392,7 +392,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextLinkedin"/>
+          <ComponentRef name="jTextFieldLinkedin"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Linkedin:"/>
       </Properties>
@@ -403,7 +403,7 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="jTextFormato"/>
+          <ComponentRef name="jTextFieldFormato"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Formato:"/>
       </Properties>
@@ -419,9 +419,8 @@
         <Property name="text" type="java.lang.String" value="Experiencia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextNombre">
+    <Component class="javax.swing.JTextField" name="jTextFieldNombre">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ec" green="ec" red="ec" type="rgb"/>
         </Property>
@@ -434,27 +433,10 @@
           </Border>
         </Property>
         <Property name="focusable" type="boolean" value="false"/>
-        <Property name="name" type="java.lang.String" value="jTextNombre" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="jTextFieldNombre" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextLinkedin">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ec" green="ec" red="ec" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-            <BevelBorder>
-              <Color PropertyName="highlightOuter" blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
-              <Color PropertyName="shadowOuter" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
-            </BevelBorder>
-          </Border>
-        </Property>
-        <Property name="focusable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFormato">
+    <Component class="javax.swing.JTextField" name="jTextFieldLinkedin">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -471,7 +453,7 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextMail">
+    <Component class="javax.swing.JTextField" name="jTextFieldFormato">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -488,7 +470,7 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextDireccion">
+    <Component class="javax.swing.JTextField" name="jTextFieldMail">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -505,7 +487,24 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextCedula">
+    <Component class="javax.swing.JTextField" name="jTextFieldDireccion">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ec" green="ec" red="ec" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder>
+              <Color PropertyName="highlightOuter" blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+              <Color PropertyName="shadowOuter" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+            </BevelBorder>
+          </Border>
+        </Property>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCedula">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -523,7 +522,7 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextTelefono">
+    <Component class="javax.swing.JTextField" name="jTextFieldTelefono">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

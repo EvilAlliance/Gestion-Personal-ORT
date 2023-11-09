@@ -155,6 +155,11 @@ public class RegistroTematica extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
+    public void reset(){
+        this.jTextAreaDescripcion.setText("");
+        this.jTextFieldNombre.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonRegistrar;

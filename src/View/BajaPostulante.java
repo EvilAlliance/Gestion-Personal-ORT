@@ -30,9 +30,10 @@ public class BajaPostulante extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelBajaPostulante = new javax.swing.JLabel();
-        jScrollPanePostulante = new javax.swing.JScrollPane();
-        jTablePostulante = new javax.swing.JTable();
         jButtonAtras = new javax.swing.JButton();
+        jLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListPostulante = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Baja Postulante");
@@ -51,38 +52,17 @@ public class BajaPostulante extends javax.swing.JFrame {
         jLabelBajaPostulante.setLabelFor(this);
         jLabelBajaPostulante.setText("Baja de Postulante");
 
-        jTablePostulante.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Cedula", "Nombre", "Formato", "Telefono", "Mail", "Linkedin"
-            }
-        ));
-        jTablePostulante.setToolTipText("Doble Click para eliminar");
-        jScrollPanePostulante.setViewportView(jTablePostulante);
-
         jButtonAtras.setText("Atras");
         jButtonAtras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAtrasMouseClicked(evt);
             }
         });
+
+        jLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel.setText("Doble Click para Eliminar");
+
+        jScrollPane1.setViewportView(jListPostulante);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,25 +72,31 @@ public class BajaPostulante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPanePostulante))
+                        .addComponent(jLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jLabelBajaPostulante)
-                        .addGap(0, 268, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 154, Short.MAX_VALUE)
+                .addComponent(jLabelBajaPostulante)
+                .addGap(154, 154, 154))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
                 .addComponent(jButtonAtras)
-                .addGap(349, 349, 349))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelBajaPostulante)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAtras)
                 .addContainerGap())
         );
@@ -126,14 +112,19 @@ public class BajaPostulante extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
+    public void reset(){
+        this.jListPostulante.setListData(new String[0]);
+    }
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Controller.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabelBajaPostulante;
-    private javax.swing.JScrollPane jScrollPanePostulante;
-    private javax.swing.JTable jTablePostulante;
+    private javax.swing.JList<String> jListPostulante;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

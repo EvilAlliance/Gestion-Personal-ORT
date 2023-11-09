@@ -172,13 +172,18 @@ public class ConsultaPuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
-        this.setVisible(true);
-        Controller.initMenuTematica();
+        this.dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Controller.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
+
+    public void reset() {
+        this.jListPostulante.setListData(new String[0]);
+        this.jListPuestos.setListData(new String[0]);
+        this.jSpinnerNivel.setValue(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;

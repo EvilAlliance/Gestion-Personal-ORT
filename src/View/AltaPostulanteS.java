@@ -5,6 +5,7 @@
 package View;
 
 import Controller.Controller;
+import Model.JobPosition;
 import java.awt.Color;
 
 /**
@@ -90,9 +91,7 @@ public class AltaPostulanteS extends javax.swing.JFrame {
 
         jButtonAgregar.setText("Agregar");
 
-        jComboBoxTema.setBackground(new java.awt.Color(236, 236, 236));
-
-        jScrollPaneExperiencia.setViewportBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jScrollPaneExperiencia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jListExperiencia.setBackground(new java.awt.Color(236, 236, 236));
         jScrollPaneExperiencia.setViewportView(jListExperiencia);
@@ -175,18 +174,26 @@ public class AltaPostulanteS extends javax.swing.JFrame {
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
         this.setVisible(false);
-        Controller.initAltaPostulante();
+        Controller.initAltaPostulante(false);
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Controller.disposeAltaPostulante();
         Controller.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
         if (true) {
-            Controller.diposeAltaPostulante();
+            Controller.disposeAltaPostulante();
+            Controller.initMenuPostulante();
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
+    public void reset() {
+        this.jListExperiencia.setListData(new String[0]);
+        this.jSpinnerNivel.setValue(0);
+        this.jComboBoxTema.removeAllItems();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;

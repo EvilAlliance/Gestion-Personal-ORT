@@ -51,8 +51,14 @@ public class IngresoEntrevista extends javax.swing.JFrame {
             }
         });
 
+        jScrollPaneIntrevistador.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListIntrevistador.setBackground(new java.awt.Color(236, 236, 236));
         jScrollPaneIntrevistador.setViewportView(jListIntrevistador);
 
+        jScrollPanePostulante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListPostulante.setBackground(new java.awt.Color(236, 236, 236));
         jScrollPanePostulante.setViewportView(jListPostulante);
 
         jLabelIngresoEntrevista.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -154,6 +160,12 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
+    public void reset(){
+        this.jListIntrevistador.setListData(new String[0]);
+        this.jListPostulante.setListData(new String[0]);
+        this.jSpinnerPuntaje.setValue(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGuardar;

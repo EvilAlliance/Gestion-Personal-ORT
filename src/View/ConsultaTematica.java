@@ -33,12 +33,10 @@ public class ConsultaTematica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListTematicas = new javax.swing.JList<>();
         jLabelCantPostulantes = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPaneCantPostulantes = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPaneCantPuestos = new javax.swing.JTextPane();
         jLabelCantPuestos = new javax.swing.JLabel();
         jButtonAtras = new javax.swing.JButton();
+        jTextFieldCantPostulantes = new javax.swing.JTextField();
+        jTextFieldCantPuestos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -57,10 +55,6 @@ public class ConsultaTematica extends javax.swing.JFrame {
 
         jLabelCantPostulantes.setText("Postultantes con mayor nivel a 5:");
 
-        jScrollPane2.setViewportView(jTextPaneCantPostulantes);
-
-        jScrollPane3.setViewportView(jTextPaneCantPuestos);
-
         jLabelCantPuestos.setText("Cantidad de puestos:");
 
         jButtonAtras.setText("Atras");
@@ -69,6 +63,16 @@ public class ConsultaTematica extends javax.swing.JFrame {
                 jButtonAtrasMouseClicked(evt);
             }
         });
+
+        jTextFieldCantPostulantes.setEditable(false);
+        jTextFieldCantPostulantes.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldCantPostulantes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCantPostulantes.setFocusable(false);
+
+        jTextFieldCantPuestos.setEditable(false);
+        jTextFieldCantPuestos.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldCantPuestos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCantPuestos.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,10 +89,10 @@ public class ConsultaTematica extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelCantPostulantes)
+                                    .addComponent(jLabelCantPuestos)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelCantPuestos, javax.swing.GroupLayout.Alignment.LEADING))))))
+                                        .addComponent(jTextFieldCantPuestos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldCantPostulantes, javax.swing.GroupLayout.Alignment.LEADING))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jLabel1)))
@@ -104,11 +108,11 @@ public class ConsultaTematica extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelCantPostulantes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addComponent(jTextFieldCantPostulantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabelCantPuestos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCantPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAtras))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,6 +134,12 @@ public class ConsultaTematica extends javax.swing.JFrame {
         Controller.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
 
+    public void reset(){
+        this.jListTematicas.setListData(new String[0]);
+        this.jTextFieldCantPostulantes.setText("");
+        this.jTextFieldCantPuestos.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JLabel jLabel1;
@@ -137,9 +147,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCantPuestos;
     private javax.swing.JList<String> jListTematicas;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextPane jTextPaneCantPostulantes;
-    private javax.swing.JTextPane jTextPaneCantPuestos;
+    private javax.swing.JTextField jTextFieldCantPostulantes;
+    private javax.swing.JTextField jTextFieldCantPuestos;
     // End of variables declaration//GEN-END:variables
 }

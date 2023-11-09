@@ -29,10 +29,20 @@ public class RegistroPuesto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupTipo = new javax.swing.ButtonGroup();
         jLabelRegistroPuesto = new javax.swing.JLabel();
-        jScrollPanePuesto = new javax.swing.JScrollPane();
-        jTablePuesto = new javax.swing.JTable();
         jButtonAtras = new javax.swing.JButton();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelTipo = new javax.swing.JLabel();
+        jLabelTema = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jRadioButtonRemoto = new javax.swing.JRadioButton();
+        jRadioButtonPresencial = new javax.swing.JRadioButton();
+        jRadioButtonMixto = new javax.swing.JRadioButton();
+        jScrollPaneTema = new javax.swing.JScrollPane();
+        jListTema = new javax.swing.JList<>();
+        jScrollPaneTemaSelected = new javax.swing.JScrollPane();
+        jListTemaSelected = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -47,35 +57,46 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jLabelRegistroPuesto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelRegistroPuesto.setText("Registro de Puesto ");
 
-        jTablePuesto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Tipo", "Temas"
-            }
-        ));
-        jScrollPanePuesto.setViewportView(jTablePuesto);
-
         jButtonAtras.setText("Atras");
         jButtonAtras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAtrasMouseClicked(evt);
             }
         });
+
+        jLabelNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelNombre.setText("Nombre:");
+
+        jLabelTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelTipo.setText("Tipo:");
+
+        jLabelTema.setText("Tema:");
+
+        jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jRadioButtonRemoto.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroupTipo.add(jRadioButtonRemoto);
+        jRadioButtonRemoto.setText("Remoto");
+        jRadioButtonRemoto.setToolTipText("");
+
+        jRadioButtonPresencial.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroupTipo.add(jRadioButtonPresencial);
+        jRadioButtonPresencial.setText("Presencial");
+
+        jRadioButtonMixto.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroupTipo.add(jRadioButtonMixto);
+        jRadioButtonMixto.setText("Mixto");
+
+        jScrollPaneTema.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListTema.setBackground(new java.awt.Color(236, 236, 236));
+        jScrollPaneTema.setViewportView(jListTema);
+
+        jScrollPaneTemaSelected.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListTemaSelected.setBackground(new java.awt.Color(236, 236, 236));
+        jScrollPaneTemaSelected.setViewportView(jListTemaSelected);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,28 +105,57 @@ public class RegistroPuesto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPanePuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(13, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabelRegistroPuesto)
-                        .addGap(95, 95, 95))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras)
-                .addGap(44, 44, 44))
+                        .addGap(95, 95, 95))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNombre)
+                            .addComponent(jLabelTipo)
+                            .addComponent(jLabelTema))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNombre)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRadioButtonRemoto)
+                                .addGap(57, 57, 57)
+                                .addComponent(jRadioButtonPresencial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRadioButtonMixto))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonAtras)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPaneTema, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPaneTemaSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelRegistroPuesto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPanePuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTipo)
+                    .addComponent(jRadioButtonRemoto)
+                    .addComponent(jRadioButtonPresencial)
+                    .addComponent(jRadioButtonMixto))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPaneTemaSelected)
+                    .addComponent(jScrollPaneTema)
+                    .addComponent(jLabelTema))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAtras)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,11 +172,27 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
-
+    public void reset(){
+        this.jTextFieldNombre.setText("");
+        this.buttonGroupTipo.clearSelection();
+        this.jListTema.setListData(new String[0]);
+        this.jListTemaSelected.setListData(new String[0]);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelRegistroPuesto;
-    private javax.swing.JScrollPane jScrollPanePuesto;
-    private javax.swing.JTable jTablePuesto;
+    private javax.swing.JLabel jLabelTema;
+    private javax.swing.JLabel jLabelTipo;
+    private javax.swing.JList<String> jListTema;
+    private javax.swing.JList<String> jListTemaSelected;
+    private javax.swing.JRadioButton jRadioButtonMixto;
+    private javax.swing.JRadioButton jRadioButtonPresencial;
+    private javax.swing.JRadioButton jRadioButtonRemoto;
+    private javax.swing.JScrollPane jScrollPaneTema;
+    private javax.swing.JScrollPane jScrollPaneTemaSelected;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

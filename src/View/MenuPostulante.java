@@ -142,7 +142,7 @@ public class MenuPostulante extends javax.swing.JFrame {
 
     private void jButtonAltaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAltaPostulanteMouseClicked
         this.setVisible(false);
-        Controller.initAltaPostulante();
+        Controller.initAltaPostulante(true);
     }//GEN-LAST:event_jButtonAltaPostulanteMouseClicked
 
     private void jButtonBajaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBajaPostulanteMouseClicked

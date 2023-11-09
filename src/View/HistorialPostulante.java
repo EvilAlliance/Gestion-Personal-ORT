@@ -34,7 +34,7 @@ public class HistorialPostulante extends javax.swing.JFrame {
         jScrollPanePostulantes = new javax.swing.JScrollPane();
         jListPostulantes = new javax.swing.JList<>();
         jLabelBuscar = new javax.swing.JLabel();
-        jTextBuscar = new javax.swing.JTextField();
+        jTextFieldBuscar = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
         jButtonResetear = new javax.swing.JButton();
         jScrollPaneReferencia = new javax.swing.JScrollPane();
@@ -47,13 +47,13 @@ public class HistorialPostulante extends javax.swing.JFrame {
         jLabelLinkedin = new javax.swing.JLabel();
         jLabelFormato = new javax.swing.JLabel();
         jLabelExperiencia = new javax.swing.JLabel();
-        jTextNombre = new javax.swing.JTextField();
-        jTextLinkedin = new javax.swing.JTextField();
-        jTextFormato = new javax.swing.JTextField();
-        jTextMail = new javax.swing.JTextField();
-        jTextDireccion = new javax.swing.JTextField();
-        jTextCedula = new javax.swing.JTextField();
-        jTextTelefono = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldLinkedin = new javax.swing.JTextField();
+        jTextFieldFormato = new javax.swing.JTextField();
+        jTextFieldMail = new javax.swing.JTextField();
+        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldCedula = new javax.swing.JTextField();
+        jTextFieldTelefono = new javax.swing.JTextField();
         jLabelFrame = new javax.swing.JLabel();
         jScrollPaneExperiencia = new javax.swing.JScrollPane();
         jListExperiencia = new javax.swing.JList<>();
@@ -93,11 +93,11 @@ public class HistorialPostulante extends javax.swing.JFrame {
         jListPostulantes.getAccessibleContext().setAccessibleParent(jListPostulantes);
 
         jLabelBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelBuscar.setLabelFor(jTextBuscar);
+        jLabelBuscar.setLabelFor(jTextFieldBuscar);
         jLabelBuscar.setText("Buscar:");
 
-        jTextBuscar.setBackground(new java.awt.Color(236, 236, 236));
-        jTextBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldBuscar.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.setToolTipText("");
@@ -146,73 +146,72 @@ public class HistorialPostulante extends javax.swing.JFrame {
         jScrollPaneReferencia.setViewportView(jTableReferencia);
 
         jLabelNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelNombre.setLabelFor(jTextNombre);
+        jLabelNombre.setLabelFor(jTextFieldNombre);
         jLabelNombre.setText("Nombre:");
         jLabelNombre.setName("jLabelNombre"); // NOI18N
 
         jLabelCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelCedula.setLabelFor(jTextCedula);
+        jLabelCedula.setLabelFor(jTextFieldCedula);
         jLabelCedula.setText("Cédula:");
 
         jLabelDireccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelDireccion.setLabelFor(jTextDireccion);
+        jLabelDireccion.setLabelFor(jTextFieldDireccion);
         jLabelDireccion.setText("Dirección:");
 
         jLabelTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelTelefono.setLabelFor(jTextTelefono);
+        jLabelTelefono.setLabelFor(jTextFieldTelefono);
         jLabelTelefono.setText("Teléfono:");
 
         jLabelMail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelMail.setLabelFor(jTextMail);
+        jLabelMail.setLabelFor(jTextFieldMail);
         jLabelMail.setText("Mail:");
 
         jLabelLinkedin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelLinkedin.setLabelFor(jTextLinkedin);
+        jLabelLinkedin.setLabelFor(jTextFieldLinkedin);
         jLabelLinkedin.setText("Linkedin:");
 
         jLabelFormato.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelFormato.setLabelFor(jTextFormato);
+        jLabelFormato.setLabelFor(jTextFieldFormato);
         jLabelFormato.setText("Formato:");
 
         jLabelExperiencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelExperiencia.setLabelFor(jLabelExperiencia);
         jLabelExperiencia.setText("Experiencia:");
 
-        jTextNombre.setEditable(false);
-        jTextNombre.setBackground(new java.awt.Color(236, 236, 236));
-        jTextNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextNombre.setFocusable(false);
-        jTextNombre.setName("jTextNombre"); // NOI18N
+        jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.setFocusable(false);
+        jTextFieldNombre.setName("jTextFieldNombre"); // NOI18N
 
-        jTextLinkedin.setEditable(false);
-        jTextLinkedin.setBackground(new java.awt.Color(236, 236, 236));
-        jTextLinkedin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextLinkedin.setFocusable(false);
+        jTextFieldLinkedin.setEditable(false);
+        jTextFieldLinkedin.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldLinkedin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldLinkedin.setFocusable(false);
 
-        jTextFormato.setEditable(false);
-        jTextFormato.setBackground(new java.awt.Color(236, 236, 236));
-        jTextFormato.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextFormato.setFocusable(false);
+        jTextFieldFormato.setEditable(false);
+        jTextFieldFormato.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldFormato.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldFormato.setFocusable(false);
 
-        jTextMail.setEditable(false);
-        jTextMail.setBackground(new java.awt.Color(236, 236, 236));
-        jTextMail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextMail.setFocusable(false);
+        jTextFieldMail.setEditable(false);
+        jTextFieldMail.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldMail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldMail.setFocusable(false);
 
-        jTextDireccion.setEditable(false);
-        jTextDireccion.setBackground(new java.awt.Color(236, 236, 236));
-        jTextDireccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextDireccion.setFocusable(false);
+        jTextFieldDireccion.setEditable(false);
+        jTextFieldDireccion.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldDireccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldDireccion.setFocusable(false);
 
-        jTextCedula.setEditable(false);
-        jTextCedula.setBackground(new java.awt.Color(236, 236, 236));
-        jTextCedula.setActionCommand("<Not Set>");
-        jTextCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
-        jTextCedula.setFocusable(false);
+        jTextFieldCedula.setEditable(false);
+        jTextFieldCedula.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldCedula.setActionCommand("<Not Set>");
+        jTextFieldCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCedula.setFocusable(false);
 
-        jTextTelefono.setEditable(false);
-        jTextTelefono.setBackground(new java.awt.Color(236, 236, 236));
-        jTextTelefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldTelefono.setEditable(false);
+        jTextFieldTelefono.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldTelefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jLabelFrame.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelFrame.setLabelFor(this);
@@ -249,9 +248,9 @@ public class HistorialPostulante extends javax.swing.JFrame {
                                     .addComponent(jLabelDireccion))
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextNombre)
-                                    .addComponent(jTextCedula)
-                                    .addComponent(jTextDireccion)))
+                                    .addComponent(jTextFieldNombre)
+                                    .addComponent(jTextFieldCedula)
+                                    .addComponent(jTextFieldDireccion)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelTelefono)
@@ -261,16 +260,16 @@ public class HistorialPostulante extends javax.swing.JFrame {
                                     .addComponent(jLabelExperiencia))
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextTelefono)
-                                    .addComponent(jTextMail)
-                                    .addComponent(jTextLinkedin)
-                                    .addComponent(jTextFormato)
+                                    .addComponent(jTextFieldTelefono)
+                                    .addComponent(jTextFieldMail)
+                                    .addComponent(jTextFieldLinkedin)
+                                    .addComponent(jTextFieldFormato)
                                     .addComponent(jScrollPaneExperiencia))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -294,33 +293,33 @@ public class HistorialPostulante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPostulantes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNombre)
-                    .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelCedula)
-                            .addComponent(jTextCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelDireccion)
-                            .addComponent(jTextDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTelefono)
-                            .addComponent(jTextTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelMail)
-                            .addComponent(jTextMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelLinkedin)
-                            .addComponent(jTextLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFormato)
-                            .addComponent(jTextFormato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldFormato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelExperiencia)
@@ -331,7 +330,7 @@ public class HistorialPostulante extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBuscar)
-                    .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscar)
                     .addComponent(jButtonResetear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -351,6 +350,20 @@ public class HistorialPostulante extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Controller.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
+
+    public void reset() {
+        this.jTextFieldCedula.setText("");
+        this.jTextFieldDireccion.setText("");
+        this.jTextFieldLinkedin.setText("");
+        this.jTextFieldMail.setText("");
+        this.jTextFieldNombre.setText("");
+        this.jTextFieldTelefono.setText("");
+        this.jTextFieldFormato.setText("");
+        this.jListPostulantes.setListData(new String[0]);
+        this.jListExperiencia.setListData(new String[0]);
+        this.jTableReferencia.removeAll();
+        this.jTextFieldBuscar.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
@@ -373,13 +386,13 @@ public class HistorialPostulante extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneReferencia;
     private javax.swing.JSeparator jSeparator;
     private javax.swing.JTable jTableReferencia;
-    private javax.swing.JTextField jTextBuscar;
-    private javax.swing.JTextField jTextCedula;
-    private javax.swing.JTextField jTextDireccion;
-    private javax.swing.JTextField jTextFormato;
-    private javax.swing.JTextField jTextLinkedin;
-    private javax.swing.JTextField jTextMail;
-    private javax.swing.JTextField jTextNombre;
-    private javax.swing.JTextField jTextTelefono;
+    private javax.swing.JTextField jTextFieldBuscar;
+    private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldFormato;
+    private javax.swing.JTextField jTextFieldLinkedin;
+    private javax.swing.JTextField jTextFieldMail;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
 }
