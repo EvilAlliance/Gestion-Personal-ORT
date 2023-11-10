@@ -5,7 +5,7 @@ package Model;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Topic extends Verifiers{
+public class Topic {
     private String topic;
     private String description;
 
@@ -16,7 +16,7 @@ public class Topic extends Verifiers{
     public boolean setTopic(String givenTopic) {
         this.topic = givenTopic;
         
-        return !containsNumbers(givenTopic) && containsCharacters(givenTopic);
+        return !Verifiers.containsNumbers(givenTopic) && Verifiers.containsCharacters(givenTopic) && Verifiers.containsSpecialCharacters(givenTopic);
     }
 
     public String getDescription() {
@@ -26,7 +26,7 @@ public class Topic extends Verifiers{
     public boolean setDescription(String givenDescription) {
         this.description = givenDescription;
         
-        return !containsNumbers(givenDescription) && containsCharacters(givenDescription);
+        return !Verifiers.containsNumbers(givenDescription) && Verifiers.containsCharacters(givenDescription) && Verifiers.containsSpecialCharacters(givenDescription);
     }
     
     public Topic(String aTopic, String aDescription){

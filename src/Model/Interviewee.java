@@ -5,7 +5,7 @@ package Model;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Interviewee extends Verifiers{
+public class Interviewee {
 
     private String name;
     private String dni;
@@ -15,27 +15,25 @@ public class Interviewee extends Verifiers{
     private String linkedin;
     private String expertiseLevel;
     private String areaExpertise;
-    String[] emailDomains = {"@gmail.com", "@hotmail.com", "@yahoo.com", "@adinet.net"};
 
-    //las unicas 2 funciones privadas son pa q solo c ingresen desde la ventana
     public String getLevelExpertise() {
         return this.expertiseLevel;
     }
 
-    private boolean setExpertiseLevel(String givenExpertiseLevel) {
+    public boolean setExpertiseLevel(String givenExpertiseLevel) {
         this.expertiseLevel = givenExpertiseLevel;
         //formato nvl experiencia (1, ..., 10)
-        return !containsNumbers(givenExpertiseLevel) && (givenExpertiseLevel.length() != 1) && !containsCharacters(givenExpertiseLevel);
+        return !Verifiers.containsNumbers(givenExpertiseLevel) && (givenExpertiseLevel.length() != 1) && !Verifiers.containsCharacters(givenExpertiseLevel);
     }
 
     public String getAreaExpertise() {
         return this.areaExpertise;
     }
 
-    private boolean setAreaExpertise(String givenAreaExpertise) {
+    public boolean setAreaExpertise(String givenAreaExpertise) {
         this.areaExpertise = givenAreaExpertise;
         //formato area experiencia (AREA EXPERIENCIA)
-        return !containsNumbers(givenAreaExpertise);
+        return !Verifiers.containsNumbers(givenAreaExpertise);
     }
 
     public String getName() {
@@ -45,7 +43,7 @@ public class Interviewee extends Verifiers{
     public boolean setName(String givenName) {
         this.name = givenName;
         //formato nombre (Nombre Apellido)
-        return containsNumbers(givenName) && !containsCharacters(givenName);
+        return Verifiers.containsNumbers(givenName) && !Verifiers.containsCharacters(givenName);
     }
 
     public String getDni() {
@@ -54,8 +52,8 @@ public class Interviewee extends Verifiers{
 
     public boolean setDni(String givenDni) {
         this.dni = givenDni;
-        //formato dni (X.XXX.XXX-X)
-        return !containsNumbers(givenDni) && containsCharacters(givenDni) && givenDni.contains(".") && givenDni.contains("-");
+        //formato dni (X.XXX.XXX-X), largo: 8
+        return !Verifiers.containsNumbers(givenDni) && Verifiers.containsCharacters(givenDni) && givenDni.contains(".") && givenDni.contains("-");
     }
 
     public String getHomeDirection() {
@@ -65,8 +63,7 @@ public class Interviewee extends Verifiers{
     public boolean setHomeDirection(String givenHomeDirection) {
         this.homeDirection = givenHomeDirection;
         //formato direccion (NOMBRE CALLE - NUMERO CASA - NUMERO APARTAMENTO (OPCIONAL))
-        return (givenHomeDirection.split("-").length != 3 || givenHomeDirection.split("-").length != 2) && !containsNumbers(givenHomeDirection.split("-")[1]) || !containsNumbers(givenHomeDirection.split("-")[2]);
-        //esto puede tener un error
+        return (givenHomeDirection.split("-").length != 3 || givenHomeDirection.split("-").length != 2) && !Verifiers.containsNumbers(givenHomeDirection.split("-")[1]) || !Verifiers.containsNumbers(givenHomeDirection.split("-")[2]);
     }
 
     public String getEmail() {
@@ -76,7 +73,7 @@ public class Interviewee extends Verifiers{
     public boolean setEmail(String givenEmail) {
         this.email = givenEmail;
         //formato email (yourExample@yourDomain.com || yourExample@yourDomain.net)
-        return givenEmail.contains(emailDomains[0]) || givenEmail.contains(emailDomains[1]) || givenEmail.contains(emailDomains[2]) || givenEmail.contains(emailDomains[3]);
+        return givenEmail.contains(Verifiers.emailDomains[0]) || givenEmail.contains(Verifiers.emailDomains[1]) || givenEmail.contains(Verifiers.emailDomains[2]) || givenEmail.contains(Verifiers.emailDomains[3]);
     }
 
     public String getLinkedin() {
@@ -89,14 +86,84 @@ public class Interviewee extends Verifiers{
         return givenLink.contains("www.linkedin.com/in/" + this.getName().toLowerCase().split(" ")[0] + "-" + this.getName().toLowerCase().split(" ")[1]);
     }
 
-    public void setPhone(String givenPhone) {
+    public boolean setPhone(String givenPhone) {
         this.phone = givenPhone;
+        
+        return givenPhone.length() == 9;
     }
 
     public String getPhone() {
         return this.phone;
     }
 
+    //empiezan los verifiers
+    public static String verifyName(String name){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(name, true, false) + " " + Verifiers.errorLength2Arrays(name.split(" "), 2);
+ 
+        return errorMessage;
+    }
+    
+    public static String verifyDni(String dni){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(dni, false, true) + " " + Verifiers.errorLength2Strings(dni, 8);
+ 
+        return errorMessage;
+    }
+    
+    public static String verifyPhone(String phone){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(phone, false, true) + " " + Verifiers.errorLength2Strings(phone, 9);
+ 
+        return errorMessage;
+    }
+    
+    public static String verifyHomeDirection(String homeDirection, int specifiedLength){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(homeDirection, true, true) + " " + Verifiers.errorLength2Arrays(homeDirection.split(" "), specifiedLength);
+ 
+        return errorMessage;
+    }
+    
+    public static String verifyMail(String mail){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(mail, false, false) + " " + Verifiers.errorDomain(mail);
+ 
+        return errorMessage;
+    }
+    
+    
+    public static String verifyLinkedin(String link){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(link, true, false) + " " + Verifiers.errorLinkedin(link);
+ 
+        return errorMessage;
+    }
+   
+    
+    public static String verifyExpertiseLevel(String expertiseLevel){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(expertiseLevel, false, true) + " " + Verifiers.errorLength2Strings(expertiseLevel, 1);
+ 
+        return errorMessage;
+    }
+    
+    public static String verifyAreaExpertise(String areaExpertise){
+        String errorMessage = "";
+        
+        errorMessage += Verifiers.errorType(areaExpertise, true, false);
+ 
+        return errorMessage;
+    }
+    //terminan los verifiers
+    
     public Interviewee(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String aLink) {
         this.setDni(aDni);
         this.setEmail(anEmail);
@@ -104,7 +171,6 @@ public class Interviewee extends Verifiers{
         this.setLinkedin(aLink);
         this.setName(aName);
         this.setPhone(aPhone);
-        this.setCharList();
     }
 
     @Override

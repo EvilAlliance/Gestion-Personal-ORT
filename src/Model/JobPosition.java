@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class JobPosition extends Verifiers{
+public class JobPosition {
     private String positionName;
     private String positionType;
     private ArrayList<String> requiredAreaExpertise;
@@ -19,7 +19,7 @@ public class JobPosition extends Verifiers{
     public boolean setPositionName(String givenPositionName) {
         this.positionName = givenPositionName;
         
-        return !containsNumbers(givenPositionName) && containsCharacters(givenPositionName);
+        return !Verifiers.containsNumbers(givenPositionName) && Verifiers.containsCharacters(givenPositionName);
     }
 
     public String getPositionType() {
@@ -29,7 +29,7 @@ public class JobPosition extends Verifiers{
     public boolean setPositionType(String givenPositionType) {
         this.positionType = givenPositionType;
         
-        return !containsNumbers(givenPositionType) && containsCharacters(givenPositionType);
+        return !Verifiers.containsNumbers(givenPositionType) && Verifiers.containsCharacters(givenPositionType);
     }
 
     //ponele

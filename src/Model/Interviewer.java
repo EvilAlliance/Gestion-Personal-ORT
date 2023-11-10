@@ -16,7 +16,7 @@ public class Interviewer extends Interviewee {
     public boolean setEntryYear(String givenEntryYear) {
         this.entryYear = givenEntryYear;
         
-        return containsNumbers(givenEntryYear) && !containsCharacters(givenEntryYear);
+        return Verifiers.containsNumbers(givenEntryYear) && !Verifiers.containsCharacters(givenEntryYear);
     }
 
     public Interviewer(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String anEntryYear) {

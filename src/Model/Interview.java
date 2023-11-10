@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Interview extends Verifiers{
+public class Interview {
     private Interviewer interviewer;
     private ArrayList<Interviewee> intervieweeList;
     private ArrayList<Interviewer> interviewerList;
@@ -24,7 +24,7 @@ public class Interview extends Verifiers{
         this.interviewer = givenInterviewer;
         this.interviewerList.add(givenInterviewer);
         
-        return !containsNumbers(givenInterviewer.getName()) && containsCharacters(givenInterviewer.getName());
+        return !Verifiers.containsNumbers(givenInterviewer.getName()) && Verifiers.containsCharacters(givenInterviewer.getName());
     }
     /*
     public ArrayList<Interviewee> getIntervieweeList() {
@@ -50,7 +50,7 @@ public class Interview extends Verifiers{
     public boolean setInterviewScore(String givenInterviewScore) {
         this.interviewScore = givenInterviewScore;
         
-        return givenInterviewScore.length() == 1 && !containsCharacters(givenInterviewScore) && containsNumbers(givenInterviewScore);
+        return givenInterviewScore.length() == 1 && !Verifiers.containsCharacters(givenInterviewScore) && Verifiers.containsNumbers(givenInterviewScore);
     }
 
     public String getInterviewCommentaries() {
@@ -60,7 +60,7 @@ public class Interview extends Verifiers{
     public boolean setInterviewCommentaries(String givenInterviewCommentaries) {
         this.interviewCommentary = givenInterviewCommentaries;
         
-        return givenInterviewCommentaries.length() == 1  && !containsNumbers(givenInterviewCommentaries.split(" ")[0]); 
+        return givenInterviewCommentaries.length() == 1  && !Verifiers.containsNumbers(givenInterviewCommentaries.split(" ")[0]); 
     }
 
     public static int getInterviewNumber() {
@@ -74,9 +74,5 @@ public class Interview extends Verifiers{
         interviewNumber++;
     }
     
-    /* realmente quiero q cuando c inicialize sin ningun dato me cambie el numero de la entrevista?
-    public Interview(){
-        interviewNumber++;
-    }
-    */
+    
 }
