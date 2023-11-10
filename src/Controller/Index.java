@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
+
+import Model.*;
 
 /**
  *
@@ -12,5 +10,26 @@ public class Index {
 
     public static void main(String[] args) {
         Controller.init();
+        
+        Interviewee x;
+        x = new Interviewee("Pedro Chialanza", "123456789", "algun - lugar123", "1123413451345", "adsgagasgasd", "linkedin");
+        
+        Interviewer y;
+        y = new Interviewer("Leandro Meneses", "123456789", "algun - lugar123", "1123413451345", "adsgagasgasd", "1990");
+        
+        Interview z;
+        z = new Interview(y, x, "3", "pasa raspando");
+        
+        JobPosition w;
+        w = new JobPosition("Jefe Tecnico de Mantenimiento", "Supervisacion");
+        
+        Topic v;
+        v = new Topic("NO C ME OCURRE NINGUN NOMBRE", "D:");
+        
+        System.out.println(x.toString());
+        System.out.println(y.toString());
+        System.out.println(z.toString());
+        System.out.println(w.toString());
+        System.out.println(v.toString());
     }
 }

@@ -13,20 +13,16 @@ public class Topic {
         return this.topic;
     }
 
-    public boolean setTopic(String givenTopic) {
+    public void setTopic(String givenTopic) {
         this.topic = givenTopic;
-        
-        return !Verifiers.containsNumbers(givenTopic) && Verifiers.containsCharacters(givenTopic) && Verifiers.containsSpecialCharacters(givenTopic);
     }
 
     public String getDescription() {
         return this.description;
     }
 
-    public boolean setDescription(String givenDescription) {
+    public void setDescription(String givenDescription) {
         this.description = givenDescription;
-        
-        return !Verifiers.containsNumbers(givenDescription) && Verifiers.containsCharacters(givenDescription) && Verifiers.containsSpecialCharacters(givenDescription);
     }
     
     public Topic(String aTopic, String aDescription){
@@ -34,4 +30,8 @@ public class Topic {
         this.setTopic(aTopic);
     }
     
+    @Override
+    public String toString(){
+        return "Tematica: " + this.getTopic() + "\nDescripcion: " + this.getDescription();
+    }
 }

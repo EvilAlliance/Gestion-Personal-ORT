@@ -16,20 +16,16 @@ public class JobPosition {
         return this.positionName;
     }
 
-    public boolean setPositionName(String givenPositionName) {
+    public void setPositionName(String givenPositionName) {
         this.positionName = givenPositionName;
-        
-        return !Verifiers.containsNumbers(givenPositionName) && Verifiers.containsCharacters(givenPositionName);
     }
 
     public String getPositionType() {
         return this.positionType;
     }
 
-    public boolean setPositionType(String givenPositionType) {
+    public void setPositionType(String givenPositionType) {
         this.positionType = givenPositionType;
-        
-        return !Verifiers.containsNumbers(givenPositionType) && Verifiers.containsCharacters(givenPositionType);
     }
 
     //ponele
@@ -44,5 +40,10 @@ public class JobPosition {
     public JobPosition(String aPositionName, String aPositionType){
         this.setPositionName(aPositionName);
         this.setPositionType(aPositionType);
+    }
+    
+    @Override
+    public String toString(){
+        return "Puesto: " + this.getPositionName() + "\nTipo de Puesto: " + this.getPositionType();
     }
 }

@@ -13,10 +13,8 @@ public class Interviewer extends Interviewee {
         return this.entryYear;
     }
 
-    public boolean setEntryYear(String givenEntryYear) {
+    public void setEntryYear(String givenEntryYear) {
         this.entryYear = givenEntryYear;
-        
-        return Verifiers.containsNumbers(givenEntryYear) && !Verifiers.containsCharacters(givenEntryYear);
     }
 
     public Interviewer(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String anEntryYear) {
@@ -26,6 +24,6 @@ public class Interviewer extends Interviewee {
     
     @Override
     public String toString(){
-        return "" + this.getName() + " (" + this.getDni() + ") " + this.getEntryYear();
+        return "" + this.getName() + " (" + this.getDni() + ") - " + this.getEntryYear();
     }
 }

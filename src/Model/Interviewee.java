@@ -20,76 +20,66 @@ public class Interviewee {
         return this.expertiseLevel;
     }
 
-    public boolean setExpertiseLevel(String givenExpertiseLevel) {
+    public void setExpertiseLevel(String givenExpertiseLevel) {
         this.expertiseLevel = givenExpertiseLevel;
         //formato nvl experiencia (1, ..., 10)
-        return !Verifiers.containsNumbers(givenExpertiseLevel) && (givenExpertiseLevel.length() != 1) && !Verifiers.containsCharacters(givenExpertiseLevel);
     }
 
     public String getAreaExpertise() {
         return this.areaExpertise;
     }
 
-    public boolean setAreaExpertise(String givenAreaExpertise) {
+    public void setAreaExpertise(String givenAreaExpertise) {
         this.areaExpertise = givenAreaExpertise;
         //formato area experiencia (AREA EXPERIENCIA)
-        return !Verifiers.containsNumbers(givenAreaExpertise);
     }
 
     public String getName() {
         return this.name;
     }
 
-    public boolean setName(String givenName) {
+    public void setName(String givenName) {
         this.name = givenName;
         //formato nombre (Nombre Apellido)
-        return Verifiers.containsNumbers(givenName) && !Verifiers.containsCharacters(givenName);
     }
 
     public String getDni() {
         return this.dni;
     }
 
-    public boolean setDni(String givenDni) {
+    public void setDni(String givenDni) {
         this.dni = givenDni;
         //formato dni (X.XXX.XXX-X), largo: 8
-        return !Verifiers.containsNumbers(givenDni) && Verifiers.containsCharacters(givenDni) && givenDni.contains(".") && givenDni.contains("-");
     }
 
     public String getHomeDirection() {
         return this.homeDirection;
     }
 
-    public boolean setHomeDirection(String givenHomeDirection) {
+    public void setHomeDirection(String givenHomeDirection) {
         this.homeDirection = givenHomeDirection;
         //formato direccion (NOMBRE CALLE - NUMERO CASA - NUMERO APARTAMENTO (OPCIONAL))
-        return (givenHomeDirection.split("-").length != 3 || givenHomeDirection.split("-").length != 2) && !Verifiers.containsNumbers(givenHomeDirection.split("-")[1]) || !Verifiers.containsNumbers(givenHomeDirection.split("-")[2]);
     }
 
     public String getEmail() {
         return this.email;
     }
 
-    public boolean setEmail(String givenEmail) {
+    public void setEmail(String givenEmail) {
         this.email = givenEmail;
         //formato email (yourExample@yourDomain.com || yourExample@yourDomain.net)
-        return givenEmail.contains(Verifiers.emailDomains[0]) || givenEmail.contains(Verifiers.emailDomains[1]) || givenEmail.contains(Verifiers.emailDomains[2]) || givenEmail.contains(Verifiers.emailDomains[3]);
     }
 
     public String getLinkedin() {
         return this.linkedin;
     }
 
-    public boolean setLinkedin(String givenLink) {
+    public void setLinkedin(String givenLink) {
         this.linkedin = givenLink;
-
-        return givenLink.contains("www.linkedin.com/in/" + this.getName().toLowerCase().split(" ")[0] + "-" + this.getName().toLowerCase().split(" ")[1]);
     }
 
-    public boolean setPhone(String givenPhone) {
+    public void setPhone(String givenPhone) {
         this.phone = givenPhone;
-        
-        return givenPhone.length() == 9;
     }
 
     public String getPhone() {

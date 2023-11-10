@@ -9,8 +9,9 @@ import java.util.ArrayList;
  */
 public class Interview {
     private Interviewer interviewer;
-    private ArrayList<Interviewee> intervieweeList;
-    private ArrayList<Interviewer> interviewerList;
+    private Interviewee interviewee;
+    private ArrayList<Interviewee> intervieweeList = new ArrayList<>();
+    private ArrayList<Interviewer> interviewerList = new ArrayList<>();
     private String interviewScore;
     private String interviewCommentary;
     private static int interviewNumber = 0;
@@ -20,12 +21,20 @@ public class Interview {
         return this.interviewer;
     }
 
-    public boolean setInterviewer(Interviewer givenInterviewer) {
+    public void setInterviewer(Interviewer givenInterviewer) {
         this.interviewer = givenInterviewer;
         this.interviewerList.add(givenInterviewer);
-        
-        return !Verifiers.containsNumbers(givenInterviewer.getName()) && Verifiers.containsCharacters(givenInterviewer.getName());
     }
+    
+    public Interviewee getInterviewee(){
+        return this.interviewee;
+    }
+    
+    public void setInterviewee(Interviewee givenInterviewee){
+        this.interviewee = givenInterviewee;
+        this.intervieweeList.add(givenInterviewee);
+    }
+    
     /*
     public ArrayList<Interviewee> getIntervieweeList() {
         return this.intervieweeList;
@@ -47,32 +56,32 @@ public class Interview {
         return this.interviewScore;
     }
 
-    public boolean setInterviewScore(String givenInterviewScore) {
+    public void setInterviewScore(String givenInterviewScore) {
         this.interviewScore = givenInterviewScore;
-        
-        return givenInterviewScore.length() == 1 && !Verifiers.containsCharacters(givenInterviewScore) && Verifiers.containsNumbers(givenInterviewScore);
     }
 
     public String getInterviewCommentaries() {
         return this.interviewCommentary;
     }
 
-    public boolean setInterviewCommentaries(String givenInterviewCommentaries) {
+    public void setInterviewCommentaries(String givenInterviewCommentaries) {
         this.interviewCommentary = givenInterviewCommentaries;
-        
-        return givenInterviewCommentaries.length() == 1  && !Verifiers.containsNumbers(givenInterviewCommentaries.split(" ")[0]); 
     }
 
     public static int getInterviewNumber() {
         return interviewNumber;
     }
     
-    public Interview(Interviewer anInterviewer, String anInterviewScore, String interviewCommentaries){
+    public Interview(Interviewer anInterviewer, Interviewee anInterviewee, String anInterviewScore, String interviewCommentaries){
         this.setInterviewer(anInterviewer);
+        this.setInterviewee(anInterviewee);
         this.setInterviewScore(anInterviewScore);
         this.setInterviewCommentaries(interviewCommentaries);
         interviewNumber++;
     }
     
-    
+    @Override
+    public String toString(){
+        return "Entrevistador: " + this.getInterviewer().getName() + "\nEntrevistado: " + this.getInterviewee().getName() + "\nPuntaje: " + this.getInterviewScore() + "\nComentarios: " + this.getInterviewCommentaries();
+    }
 }
