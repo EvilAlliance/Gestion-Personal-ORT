@@ -7,8 +7,8 @@ package Model;
  */
 public class Verifiers {
 
-    public static final String[] characterList = new String[27];
-    public static final String[] specialCharacterList = new String[30];
+    public static final String[] characterList = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    public static final String[] specialCharacterList = {"!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"};
     public static final String[] emailDomains = {"@gmail.com", "@hotmail.com", "@yahoo.com", "@adinet.net"};
     public static final String[] errorTypedMessages = {"Incluye numeros", "Incluye caracteres", "Incluye caracteres especiales", "Dominio de E-Mail inexistente", "Linkedin inexistente"};
     public static final String[] errorLengthMessages = {"Esta vacio", "Es muy corto", "Es muy largo"};
@@ -16,35 +16,6 @@ public class Verifiers {
     private static int indexErrorTypeMessage;
     private static final int indexErrorDomain = 3;
     private static int indexErrorLengthMessage;
-    
-
-    protected static String[] setCharList() {
-        int i = 97;
-
-        while (i <= 122) {
-            characterList[i] = ((char) i) + "";
-            i++;
-        }
-
-        return characterList;
-    }
-
-    protected static String[] setSpecialCharList() {
-        int i = 33;
-
-        while (i <= 126) {
-
-            if (((i >= 48 && i <= 57) || (i >= 65 && i <= 90) || (i >= 97 && i <= 122))) {
-                continue;
-            } else {
-                specialCharacterList[i] = ((char) i) + "";
-            }
-
-            i++;
-        }
-
-        return specialCharacterList;
-    }
 
     public static boolean containsNumbers(String aStr) {
         boolean containsNumber = false;
@@ -107,7 +78,7 @@ public class Verifiers {
     }
     
     public static String errorLength2Strings(String aStr, int specifiedLength){
-        String errorMessage = "Formato valido";
+        String errorMessage = "";
         
         if (aStr.length() == 0) {
             indexErrorLengthMessage = 0;
@@ -124,7 +95,7 @@ public class Verifiers {
     }
     
     public static String errorLength2Arrays(String[] aStr, int specifiedLength){
-        String errorMessage = "Formato valido";
+        String errorMessage = "";
         
         if (aStr.length == 0) {
             indexErrorLengthMessage = 0;
