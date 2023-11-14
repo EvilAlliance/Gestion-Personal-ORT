@@ -8,7 +8,7 @@ package Model;
 public class Verifiers {
 
     public static final String[] characterList = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-    public static final String[] specialCharacterList = {"!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"};
+    public static final String[] specialCharacterList = {"!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~","ñ"};
     public static final String[] emailDomains = {"@gmail.com", "@hotmail.com", "@yahoo.com", "@adinet.net"};
     public static final String[] errorTypedMessages = {"Incluye numeros", "Incluye caracteres", "Incluye caracteres especiales", "Dominio de E-Mail inexistente", "Linkedin inexistente"};
     public static final String[] errorLengthMessages = {"Esta vacio", "Es muy corto", "Es muy largo"};
@@ -55,15 +55,15 @@ public class Verifiers {
         return containsSpecialCharacters;
     }
 
-    public static String errorType(String aStr, boolean wantsNumbers, boolean wantsCharacters) {
+    public static String errorType(String aStr, boolean wantsNumbersChecked, boolean wantsCharactersChecked) {
         String errorMessage = "Formato valido";
         
-        if (containsNumbers(aStr) && wantsNumbers) {
+        if (containsNumbers(aStr) && wantsNumbersChecked) {
             indexErrorTypeMessage = 0;
             errorMessage = errorTypedMessages[indexErrorTypeMessage] + ", ";
         }
         
-        if (containsCharacters(aStr) && wantsCharacters){
+        if (containsCharacters(aStr) && wantsCharactersChecked){
             indexErrorTypeMessage = 1;
             errorMessage += errorTypedMessages[indexErrorTypeMessage] + ", ";
         }

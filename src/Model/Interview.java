@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Pedro Chialanza (302782)
@@ -10,8 +8,6 @@ import java.util.ArrayList;
 public class Interview {
     private Interviewer interviewer;
     private Interviewee interviewee;
-    private ArrayList<Interviewee> intervieweeList = new ArrayList<>();
-    private ArrayList<Interviewer> interviewerList = new ArrayList<>();
     private String interviewScore;
     private String interviewCommentary;
     private static int interviewNumber = 0;
@@ -23,7 +19,6 @@ public class Interview {
 
     public void setInterviewer(Interviewer givenInterviewer) {
         this.interviewer = givenInterviewer;
-        this.interviewerList.add(givenInterviewer);
     }
     
     public Interviewee getInterviewee(){
@@ -32,26 +27,8 @@ public class Interview {
     
     public void setInterviewee(Interviewee givenInterviewee){
         this.interviewee = givenInterviewee;
-        this.intervieweeList.add(givenInterviewee);
     }
     
-    /*
-    public ArrayList<Interviewee> getIntervieweeList() {
-        return this.intervieweeList;
-    }
-    
-    public ArrayList<Interviewer> getInterviewerList() {
-        return this.interviewerList;
-    }
-    */
-    private void addInterviewee(Interviewee anInterviewee) {
-        this.intervieweeList.add(anInterviewee);
-    }
-    
-    private void addInterviewer(Interviewer anInterviewer) {
-        this.interviewerList.add(anInterviewer);
-    }
-
     public String getInterviewScore() {
         return this.interviewScore;
     }
@@ -70,6 +47,14 @@ public class Interview {
 
     public static int getInterviewNumber() {
         return interviewNumber;
+    }
+    
+    public static String verifyInterviewee(Interviewee interviewee){
+        return (interviewee != null) ? "Entrevistado valido" : "No existe ningun entrevistado con esos datos";
+    }
+    
+    public static String verifyInterviewer(Interviewer interviewer){
+        return (interviewer != null) ? "Entrevistador valido" : "No existe ningun entrevistador con esos datos";
     }
     
     public Interview(Interviewer anInterviewer, Interviewee anInterviewee, String anInterviewScore, String interviewCommentaries){

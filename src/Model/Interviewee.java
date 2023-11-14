@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Pedro Chialanza (302782)
@@ -15,6 +17,7 @@ public class Interviewee {
     private String linkedin;
     private String expertiseLevel;
     private String areaExpertise;
+    private static ArrayList<Interview> interviewList = new ArrayList<>();
 
     public String getLevelExpertise() {
         return this.expertiseLevel;
@@ -28,7 +31,7 @@ public class Interviewee {
     public String getAreaExpertise() {
         return this.areaExpertise;
     }
-
+    
     public void setAreaExpertise(String givenAreaExpertise) {
         this.areaExpertise = givenAreaExpertise;
         //formato area experiencia (AREA EXPERIENCIA)
