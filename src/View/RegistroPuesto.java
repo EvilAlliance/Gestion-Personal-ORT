@@ -5,6 +5,7 @@
 package View;
 
 import Controller.Controller;
+import Model.Topic;
 import java.awt.Color;
 
 /**
@@ -43,8 +44,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jListTema = new javax.swing.JList<>();
         jScrollPaneTemaSelected = new javax.swing.JScrollPane();
         jListTemaSelected = new javax.swing.JList<>();
+        jErrorNombre = new javax.swing.JLabel();
+        jErrorTipo = new javax.swing.JLabel();
+        jErrorTema = new javax.swing.JLabel();
+        jButtomRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -74,19 +80,39 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
 
         jRadioButtonRemoto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupTipo.add(jRadioButtonRemoto);
         jRadioButtonRemoto.setText("Remoto");
         jRadioButtonRemoto.setToolTipText("");
+        jRadioButtonRemoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonRemotoMouseClicked(evt);
+            }
+        });
 
         jRadioButtonPresencial.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupTipo.add(jRadioButtonPresencial);
         jRadioButtonPresencial.setText("Presencial");
+        jRadioButtonPresencial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonPresencialMouseClicked(evt);
+            }
+        });
 
         jRadioButtonMixto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupTipo.add(jRadioButtonMixto);
         jRadioButtonMixto.setText("Mixto");
+        jRadioButtonMixto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonMixtoMouseClicked(evt);
+            }
+        });
 
         jScrollPaneTema.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
@@ -97,6 +123,22 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jListTemaSelected.setBackground(new java.awt.Color(236, 236, 236));
         jScrollPaneTemaSelected.setViewportView(jListTemaSelected);
+
+        jErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorNombre.setText(" ");
+
+        jErrorTipo.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorTipo.setText(" ");
+
+        jErrorTema.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorTema.setText(" ");
+
+        jButtomRegistrar.setText("Registrar");
+        jButtomRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtomRegistrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,6 +158,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
                             .addComponent(jLabelTema))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jErrorNombre)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jTextFieldNombre)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioButtonRemoto)
@@ -125,12 +170,18 @@ public class RegistroPuesto extends javax.swing.JFrame {
                                 .addComponent(jRadioButtonMixto))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButtonAtras)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPaneTema, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPaneTemaSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jErrorTipo)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jErrorTema, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jScrollPaneTema, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPaneTemaSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jButtonAtras)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButtomRegistrar))))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -142,20 +193,28 @@ public class RegistroPuesto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorNombre)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipo)
                     .addComponent(jRadioButtonRemoto)
                     .addComponent(jRadioButtonPresencial)
                     .addComponent(jRadioButtonMixto))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorTipo)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPaneTemaSelected)
                     .addComponent(jScrollPaneTema)
                     .addComponent(jLabelTema))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jErrorTema)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAtras)
+                    .addComponent(jButtomRegistrar))
+                .addContainerGap())
         );
 
         pack();
@@ -172,22 +231,61 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
-    public void reset(){
+
+    private void jButtomRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtomRegistrarMouseClicked
+        boolean nombreOK = !this.jTextFieldNombre.getText().equals("");
+        boolean tipoOK = this.buttonGroupTipo.getSelection() != null;
+        boolean temaOK = this.jListTemaSelected.getModel().getSize() > 0;
+
+        if (nombreOK && tipoOK && temaOK) {
+            this.dispose();
+        } else {
+            this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");
+            this.jErrorTipo.setText(tipoOK ? " " : "Selecione una opcion");
+            this.jErrorTema.setText(temaOK ? " " : "Seleccione un tema");
+
+        }
+    }//GEN-LAST:event_jButtomRegistrarMouseClicked
+
+    private void jRadioButtonRemotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonRemotoMouseClicked
+        this.jErrorTipo.setText(" ");
+    }//GEN-LAST:event_jRadioButtonRemotoMouseClicked
+
+    private void jRadioButtonPresencialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonPresencialMouseClicked
+        this.jErrorTipo.setText(" ");
+    }//GEN-LAST:event_jRadioButtonPresencialMouseClicked
+
+    private void jRadioButtonMixtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonMixtoMouseClicked
+        this.jErrorTipo.setText(" ");
+    }//GEN-LAST:event_jRadioButtonMixtoMouseClicked
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        this.jErrorNombre.setText(!this.jTextFieldNombre.getText().equals("") ? " " : "No debe estar vacio");
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    public void reset() {
         this.jTextFieldNombre.setText("");
         this.buttonGroupTipo.clearSelection();
-        this.jListTema.setListData(new String[0]);
-        this.jListTemaSelected.setListData(new String[0]);
+        this.jListTema.setListData(new Topic[0]);
+        this.jListTemaSelected.setListData(new Topic[0]);
+        this.jErrorNombre.setText(" ");
+        this.jErrorTema.setText(" ");
+        this.jErrorTipo.setText(" ");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTipo;
+    private javax.swing.JButton jButtomRegistrar;
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JLabel jErrorNombre;
+    private javax.swing.JLabel jErrorTema;
+    private javax.swing.JLabel jErrorTipo;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelRegistroPuesto;
     private javax.swing.JLabel jLabelTema;
     private javax.swing.JLabel jLabelTipo;
-    private javax.swing.JList<String> jListTema;
-    private javax.swing.JList<String> jListTemaSelected;
+    private javax.swing.JList<Topic> jListTema;
+    private javax.swing.JList<Topic> jListTemaSelected;
     private javax.swing.JRadioButton jRadioButtonMixto;
     private javax.swing.JRadioButton jRadioButtonPresencial;
     private javax.swing.JRadioButton jRadioButtonRemoto;

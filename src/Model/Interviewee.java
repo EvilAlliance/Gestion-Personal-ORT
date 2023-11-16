@@ -15,27 +15,9 @@ public class Interviewee {
     private String phone;
     private String email;
     private String linkedin;
-    private String expertiseLevel;
-    private String areaExpertise;
+    private String formato;
+    private Experiencia[] experiencia;
     private static ArrayList<Interview> interviewList = new ArrayList<>();
-
-    public String getLevelExpertise() {
-        return this.expertiseLevel;
-    }
-
-    public void setExpertiseLevel(String givenExpertiseLevel) {
-        this.expertiseLevel = givenExpertiseLevel;
-        //formato nvl experiencia (1, ..., 10)
-    }
-
-    public String getAreaExpertise() {
-        return this.areaExpertise;
-    }
-    
-    public void setAreaExpertise(String givenAreaExpertise) {
-        this.areaExpertise = givenAreaExpertise;
-        //formato area experiencia (AREA EXPERIENCIA)
-    }
 
     public String getName() {
         return this.name;
@@ -77,8 +59,16 @@ public class Interviewee {
         return this.linkedin;
     }
 
-    public void setLinkedin(String givenLink) {
-        this.linkedin = givenLink;
+    public void setLinkedin(String givenLinkedin) {
+        this.linkedin = givenLinkedin;
+    }
+
+    public String getFormato() {
+        return this.formato;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
     }
 
     public void setPhone(String givenPhone) {
@@ -89,81 +79,64 @@ public class Interviewee {
         return this.phone;
     }
 
+    public void setExperiencia(Experiencia[] experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public Experiencia[] getExperiencia() {
+        return this.experiencia;
+    }
+
     //empiezan los verifiers
-    public static String verifyName(String name){
+    public static String verifyName(String name) {
+        String errorType = Verifiers.errorType(name, true, false);
+
+        return name.equals("") ? "Esta vacio" : errorType;
+    }
+
+    public static String verifyDni(String dni) {
+        boolean errorType = Verifiers.isNumber(dni) || dni.equals("");
+        String errorLength = Verifiers.errorLength2Strings(dni, 8);
+
+        return errorType ? errorLength : "Incluye caracteres que no son numeros";
+    }
+
+    public static String verifyPhone(String phone) {
+        boolean errorType = Verifiers.isNumber(phone)  || phone.equals("");
+        String errorLength = Verifiers.errorLength2Strings(phone, 9);
+
+        return errorType ? errorLength : "Incluye caracteres que no son numeros";
+    }
+
+    public static String verifyHomeDirection(String homeDirection) {
+        String[] homeDirectionP = homeDirection.split(" ");
+        boolean minLength = homeDirectionP.length > 1 && homeDirectionP[homeDirectionP.length - 1].length() <= 4 && Verifiers.isNumber(homeDirectionP[homeDirectionP.length - 1]) && homeDirectionP[0].length() > 0;
+        return minLength ? "" : "Formato: <Nombre> <Numero>";
+    }
+
+    public static String verifyMail(String mail) {
         String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(name, true, false) + " " + Verifiers.errorLength2Arrays(name.split(" "), 2);
- 
+
+        errorMessage = Verifiers.errorDomain(mail);
+
         return errorMessage;
     }
-    
-    public static String verifyDni(String dni){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(dni, false, true) + " " + Verifiers.errorLength2Strings(dni, 8);
- 
-        return errorMessage;
+
+    public static String verifyLinkedin(String link) {
+        return Verifiers.errorLinkedin(link);
     }
-    
-    public static String verifyPhone(String phone){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(phone, false, true) + " " + Verifiers.errorLength2Strings(phone, 9);
- 
-        return errorMessage;
-    }
-    
-    public static String verifyHomeDirection(String homeDirection, int specifiedLength){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(homeDirection, true, true) + " " + Verifiers.errorLength2Arrays(homeDirection.split(" "), specifiedLength);
- 
-        return errorMessage;
-    }
-    
-    public static String verifyMail(String mail){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(mail, false, false) + " " + Verifiers.errorDomain(mail);
- 
-        return errorMessage;
-    }
-    
-    
-    public static String verifyLinkedin(String link){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(link, true, false) + " " + Verifiers.errorLinkedin(link);
- 
-        return errorMessage;
-    }
-   
-    
-    public static String verifyExpertiseLevel(String expertiseLevel){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(expertiseLevel, false, true) + " " + Verifiers.errorLength2Strings(expertiseLevel, 1);
- 
-        return errorMessage;
-    }
-    
-    public static String verifyAreaExpertise(String areaExpertise){
-        String errorMessage = "";
-        
-        errorMessage += Verifiers.errorType(areaExpertise, true, false);
- 
-        return errorMessage;
-    }
+
     //terminan los verifiers
-    
-    public Interviewee(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String aLink) {
+
+    public Interviewee(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String aLink, String aFormato, Experiencia[] experiencia) {
         this.setDni(aDni);
         this.setEmail(anEmail);
         this.setHomeDirection(aHomeDirection);
         this.setLinkedin(aLink);
         this.setName(aName);
         this.setPhone(aPhone);
+        this.setFormato(aFormato);
+        this.setExperiencia(experiencia);
     }
 
     @Override

@@ -37,6 +37,8 @@ public class RegistroTematica extends javax.swing.JFrame {
         jTextFieldNombre = new javax.swing.JTextField();
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
+        jErrorNombre = new javax.swing.JLabel();
+        jErrorDescripcion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Tematica");
@@ -78,6 +80,11 @@ public class RegistroTematica extends javax.swing.JFrame {
 
         jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
 
         jScrollPaneDescripcion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
 
@@ -86,7 +93,18 @@ public class RegistroTematica extends javax.swing.JFrame {
         jTextAreaDescripcion.setRows(5);
         jTextAreaDescripcion.setBorder(null);
         jTextAreaDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextAreaDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextAreaDescripcionKeyReleased(evt);
+            }
+        });
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
+
+        jErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorNombre.setText(" ");
+
+        jErrorDescripcion.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorDescripcion.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,22 +113,25 @@ public class RegistroTematica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabelFrame))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelDescripcion)
                             .addComponent(jLabelNombre))
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre)
-                            .addComponent(jScrollPaneDescripcion)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                                .addComponent(jButtonRegistrar)
-                                .addGap(92, 92, 92))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabelFrame)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jErrorNombre)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldNombre)
+                                .addComponent(jScrollPaneDescripcion)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButtonCancelar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                                    .addComponent(jButtonRegistrar)
+                                    .addGap(92, 92, 92)))
+                            .addComponent(jErrorDescripcion))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,17 +140,21 @@ public class RegistroTematica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jLabelNombre)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDescripcion)
-                            .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelNombre))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelFrame)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorNombre)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDescripcion)
+                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jErrorDescripcion)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonRegistrar))
@@ -152,17 +177,39 @@ public class RegistroTematica extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-        this.dispose();
+        String nombre = this.jTextFieldNombre.getText();
+        String descripcion = this.jTextAreaDescripcion.getText();
+        boolean nombreOK = !nombre.equals("");
+        boolean descripcionOK = !descripcion.equals("");
+        if (nombreOK && descripcionOK) {
+            Controller.addTematica(nombre, descripcion);
+            this.dispose();
+        } else {
+            this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");
+            this.jErrorDescripcion.setText(descripcionOK ? " " : "No debe estar vacio");
+        }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
-    public void reset(){
+    private void jTextAreaDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaDescripcionKeyReleased
+        this.jErrorDescripcion.setText(!this.jTextAreaDescripcion.getText().equals("") ? " " : "No debe estar vacio");
+    }//GEN-LAST:event_jTextAreaDescripcionKeyReleased
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        this.jErrorNombre.setText(!this.jTextFieldNombre.getText().equals("") ? " " : "No debe estar vacio");
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    public void reset() {
         this.jTextAreaDescripcion.setText("");
         this.jTextFieldNombre.setText("");
+        this.jErrorDescripcion.setText(" ");
+        this.jErrorNombre.setText(" ");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JLabel jErrorDescripcion;
+    private javax.swing.JLabel jErrorNombre;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFrame;
     private javax.swing.JLabel jLabelNombre;

@@ -5,8 +5,13 @@
 package View;
 
 import Controller.Controller;
-import Model.JobPosition;
+import Model.Topic;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import Model.Experiencia;
 
 /**
  *
@@ -43,6 +48,8 @@ public class AltaPostulanteS extends javax.swing.JFrame {
         jScrollPaneExperiencia = new javax.swing.JScrollPane();
         jListExperiencia = new javax.swing.JList<>();
         jSeparator = new javax.swing.JSeparator();
+        jErrorExperiencia = new javax.swing.JLabel();
+        jErrorTemaNivel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alta Postulante");
@@ -88,13 +95,29 @@ public class AltaPostulanteS extends javax.swing.JFrame {
         });
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEliminarMouseClicked(evt);
+            }
+        });
 
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAgregarMouseClicked(evt);
+            }
+        });
 
         jScrollPaneExperiencia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jListExperiencia.setBackground(new java.awt.Color(236, 236, 236));
         jScrollPaneExperiencia.setViewportView(jListExperiencia);
+
+        jErrorExperiencia.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorExperiencia.setText(" ");
+
+        jErrorTemaNivel.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorTemaNivel.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,16 +132,9 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNivel)
-                            .addComponent(jLabelTema))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jSpinnerNivel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAgregar))
-                            .addComponent(jComboBoxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRegistrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -127,11 +143,25 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButtonEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(jScrollPaneExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jErrorExperiencia)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPaneExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRegistrar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNivel)
+                            .addComponent(jLabelTema))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jErrorTemaNivel)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jSpinnerNivel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonAgregar))
+                            .addComponent(jComboBoxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -148,7 +178,9 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                     .addComponent(jLabelNivel)
                     .addComponent(jSpinnerNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAgregar))
-                .addGap(10, 10, 10)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorTemaNivel)
+                .addGap(2, 2, 2)
                 .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,9 +188,11 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                         .addComponent(jLabelExperiencia)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEliminar)
-                        .addGap(0, 27, Short.MAX_VALUE))
+                        .addGap(0, 13, Short.MAX_VALUE))
                     .addComponent(jScrollPaneExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorExperiencia)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonRegistrar)
                     .addComponent(jButtonCancelar))
@@ -183,16 +217,78 @@ public class AltaPostulanteS extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
-        if (true) {
-            Controller.disposeAltaPostulante();
-            Controller.initMenuPostulante();
+        boolean experienciaOK = this.modelo.getSize() >= 1;
+        if (experienciaOK) {
+            Object[] experienciaE = this.modelo.toArray();
+            Experiencia[] experiencia = new Experiencia[experienciaE.length];
+
+            for (int i = 0; i < experiencia.length; i++) {
+                experiencia[i] = (Experiencia) experienciaE[i];
+            }
+
+            Controller.addPostulante(
+                    Controller.getPostulanteNombre(),
+                    Controller.getPostulanteCedula(),
+                    Controller.getPostulanteDireccion(),
+                    Controller.getPostulanteTelefono(),
+                    Controller.getPostulanteMail(),
+                    Controller.getPostulanteLinkedin(),
+                    Controller.getPostulanteFormato(),
+                    experiencia
+            );
+            this.dispose();
+        } else {
+            this.jErrorExperiencia.setText("Tiene que agregar un tema");
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
 
+    private void jButtonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseClicked
+        this.jErrorExperiencia.setText(" ");
+        int nivel = (int) this.jSpinnerNivel.getValue();
+        Topic tema = (Topic) jComboBoxTema.getSelectedItem();
+        if (nivel < 1 || nivel > 10) {
+            this.jErrorTemaNivel.setText("Nivel 1 - 10");
+        } else if (tema == null) {
+            this.jErrorTemaNivel.setText("Ningun tema seleccionado");
+        } else {
+            this.jErrorTemaNivel.setText(" ");
+            boolean isThere = false;
+            Experiencia there = new Experiencia(nivel, tema);
+            if (!this.modelo.contains(there) || this.modelo.isEmpty()) {
+                this.modelo.addElement(new Experiencia(nivel, tema));
+            } else {
+                this.modelo.remove(this.modelo.indexOf(there));
+                this.modelo.addElement(there);
+            }
+            this.jListExperiencia.setModel(this.modelo);
+        }
+
+    }//GEN-LAST:event_jButtonAgregarMouseClicked
+
+    private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
+        this.jErrorExperiencia.setText(" ");
+        int index = this.jListExperiencia.getSelectedIndex();
+        if (index != -1) {
+            this.modelo.remove(index);
+            this.jListExperiencia.setModel(this.modelo);
+        } else {
+            this.jErrorExperiencia.setText("Selecione una de las opciones");
+        }
+    }//GEN-LAST:event_jButtonEliminarMouseClicked
+
     public void reset() {
-        this.jListExperiencia.setListData(new String[0]);
+        this.jListExperiencia.setListData(new Experiencia[0]);
         this.jSpinnerNivel.setValue(0);
         this.jComboBoxTema.removeAllItems();
+        this.jErrorExperiencia.setText(" ");
+        this.modelo = new DefaultListModel<Experiencia>();
+        this.jListExperiencia.setModel(this.modelo);
+    }
+
+    public void set(ArrayList<Topic> topicList) {
+        DefaultComboBoxModel<Topic> temaModelo = new DefaultComboBoxModel<>();
+        temaModelo.addAll((Collection<Topic>) topicList);
+        this.jComboBoxTema.setModel(temaModelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,14 +296,18 @@ public class AltaPostulanteS extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JComboBox<String> jComboBoxTema;
+    private javax.swing.JComboBox<Topic> jComboBoxTema;
+    private javax.swing.JLabel jErrorExperiencia;
+    private javax.swing.JLabel jErrorTemaNivel;
     private javax.swing.JLabel jLabelExperiencia;
     private javax.swing.JLabel jLabelFrame;
     private javax.swing.JLabel jLabelNivel;
     private javax.swing.JLabel jLabelTema;
-    private javax.swing.JList<String> jListExperiencia;
+    private javax.swing.JList<Experiencia> jListExperiencia;
     private javax.swing.JScrollPane jScrollPaneExperiencia;
     private javax.swing.JSeparator jSeparator;
     private javax.swing.JSpinner jSpinnerNivel;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel<Experiencia> modelo = new DefaultListModel<Experiencia>();
+
 }

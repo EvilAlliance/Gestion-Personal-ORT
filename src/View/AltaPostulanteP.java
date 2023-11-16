@@ -2,6 +2,8 @@ package View;
 
 import Controller.Controller;
 import java.awt.Color;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 
 /**
  *
@@ -45,6 +47,13 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonSiguiente = new javax.swing.JButton();
         jTextFieldNombre = new javax.swing.JTextField();
+        jErrorNombre = new javax.swing.JLabel();
+        jErrorDireccion = new javax.swing.JLabel();
+        jErrorFormato = new javax.swing.JLabel();
+        jErrorTelefono = new javax.swing.JLabel();
+        jErrorMail = new javax.swing.JLabel();
+        jErrorLinkedin = new javax.swing.JLabel();
+        jErrorCedula = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alta Postulante");
@@ -86,31 +95,71 @@ public class AltaPostulanteP extends javax.swing.JFrame {
 
         jTextFieldCedula.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldCedulaKeyReleased(evt);
+            }
+        });
 
         jTextFieldDireccion.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldDireccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldDireccionKeyReleased(evt);
+            }
+        });
 
         jTextFieldTelefono.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldTelefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefonoKeyReleased(evt);
+            }
+        });
 
         jTextFieldMail.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldMail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldMail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldMailKeyReleased(evt);
+            }
+        });
 
         jTextFieldLinkedin.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldLinkedin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldLinkedin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldLinkedinKeyReleased(evt);
+            }
+        });
 
         jRadioButtonRemoto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonRemoto);
         jRadioButtonRemoto.setText("Remoto");
         jRadioButtonRemoto.setToolTipText("");
+        jRadioButtonRemoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonRemotoMouseClicked(evt);
+            }
+        });
 
         jRadioButtonPresencial.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonPresencial);
         jRadioButtonPresencial.setText("Presencial");
+        jRadioButtonPresencial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonPresencialMouseClicked(evt);
+            }
+        });
 
         jRadioButtonMixto.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFormato.add(jRadioButtonMixto);
         jRadioButtonMixto.setText("Mixto");
+        jRadioButtonMixto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonMixtoMouseClicked(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,6 +177,34 @@ public class AltaPostulanteP extends javax.swing.JFrame {
 
         jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
+
+        jErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorNombre.setText(" ");
+        jErrorNombre.setToolTipText("fore");
+        jErrorNombre.setVerifyInputWhenFocusTarget(false);
+
+        jErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorDireccion.setText(" ");
+
+        jErrorFormato.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorFormato.setText(" ");
+
+        jErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorTelefono.setText(" ");
+
+        jErrorMail.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorMail.setText(" ");
+
+        jErrorLinkedin.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorLinkedin.setText(" ");
+
+        jErrorCedula.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorCedula.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,23 +236,28 @@ public class AltaPostulanteP extends javax.swing.JFrame {
                         .addComponent(jRadioButtonRemoto)
                         .addGap(58, 58, 58)
                         .addComponent(jRadioButtonPresencial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addComponent(jRadioButtonMixto)
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldMail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDireccion))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldCedula, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                            .addComponent(jTextFieldMail)
+                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldCedula)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jErrorCedula)
+                            .addComponent(jErrorLinkedin)
+                            .addComponent(jErrorMail)
+                            .addComponent(jErrorTelefono)
+                            .addComponent(jErrorFormato)
+                            .addComponent(jErrorDireccion)
+                            .addComponent(jErrorNombre))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,33 +268,47 @@ public class AltaPostulanteP extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(jErrorNombre)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCedula)
                     .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorCedula)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDireccion)
                     .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorDireccion)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTelefono)
                     .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(jErrorTelefono)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMail)
                     .addComponent(jTextFieldMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorMail)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelLinkedin)
                     .addComponent(jTextFieldLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jErrorLinkedin)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFormato)
                     .addComponent(jRadioButtonRemoto)
                     .addComponent(jRadioButtonPresencial)
                     .addComponent(jRadioButtonMixto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jErrorFormato)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSiguiente)
                     .addComponent(jButtonCancelar))
@@ -226,20 +322,106 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_formWindowOpened
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuPostulante();
-    }//GEN-LAST:event_formWindowClosed
-
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void jButtonSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSiguienteMouseClicked
-        if (true) {
+        boolean nombreOK = this.verifyNombre();
+        boolean cedulaOK = this.verifyCedula();
+        boolean direccionOK = this.verifyDireccion();
+        boolean telefonoOk = this.verifyTelefono();
+        boolean mailOK = this.verifyMail();
+        boolean linkedinOK = this.verifyLinkedin();
+        boolean fomatoOK = this.verifyFormato();
+
+        if (nombreOK && cedulaOK && direccionOK && telefonoOk && mailOK && linkedinOK && fomatoOK) {
             this.setVisible(false);
             Controller.nextAltaPostulante(false);
         }
     }//GEN-LAST:event_jButtonSiguienteMouseClicked
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        this.verifyNombre();
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDireccionKeyReleased
+        this.verifyDireccion();
+    }//GEN-LAST:event_jTextFieldDireccionKeyReleased
+
+    private void jTextFieldTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoKeyReleased
+        this.verifyTelefono();
+    }//GEN-LAST:event_jTextFieldTelefonoKeyReleased
+
+    private void jTextFieldMailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMailKeyReleased
+        this.verifyMail();
+    }//GEN-LAST:event_jTextFieldMailKeyReleased
+
+    private void jTextFieldLinkedinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLinkedinKeyReleased
+        this.verifyLinkedin();
+    }//GEN-LAST:event_jTextFieldLinkedinKeyReleased
+
+    private void jTextFieldCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCedulaKeyReleased
+        this.verifyCedula();
+    }//GEN-LAST:event_jTextFieldCedulaKeyReleased
+
+    private void jRadioButtonRemotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonRemotoMouseClicked
+        this.jErrorFormato.setText(" ");
+    }//GEN-LAST:event_jRadioButtonRemotoMouseClicked
+
+    private void jRadioButtonPresencialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonPresencialMouseClicked
+        this.jErrorFormato.setText(" ");
+    }//GEN-LAST:event_jRadioButtonPresencialMouseClicked
+
+    private void jRadioButtonMixtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonMixtoMouseClicked
+        this.jErrorFormato.setText(" ");
+    }//GEN-LAST:event_jRadioButtonMixtoMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+            Controller.initMenuPostulante();
+    }//GEN-LAST:event_formWindowClosed
+
+    public boolean verifyNombre() {
+        String nombreError = Controller.verifyPostulanteNombre(this.jTextFieldNombre.getText());
+        this.jErrorNombre.setText(nombreError.equals("") ? " " : nombreError);
+        return nombreError.equals("");
+    }
+
+    public boolean verifyCedula() {
+        String cedulaError = Controller.verifyPostulanteCedula(this.jTextFieldCedula.getText());
+        this.jErrorCedula.setText(cedulaError.equals("") ? " " : cedulaError);
+        return cedulaError.equals("");
+    }
+
+    public boolean verifyDireccion() {
+        String direccionError = Controller.verifyPostulanteDireccion(this.jTextFieldDireccion.getText());
+        this.jErrorDireccion.setText(direccionError.equals("") ? " " : direccionError);
+        return direccionError.equals("");
+    }
+
+    public boolean verifyTelefono() {
+        String telefonoError = Controller.verifyPostulanteTelefono(this.jTextFieldTelefono.getText());
+        this.jErrorTelefono.setText(telefonoError.equals("") ? " " : telefonoError);
+        return telefonoError.equals("");
+    }
+
+    public boolean verifyMail() {
+        String mailError = Controller.verifyPostulanteMail(this.jTextFieldMail.getText());
+        this.jErrorMail.setText(mailError.equals("") ? " " : mailError);
+        return mailError.equals("");
+    }
+
+    public boolean verifyLinkedin() {
+        String linkedinError = Controller.verifyPostulanteLinkedin(this.jTextFieldLinkedin.getText());
+        this.jErrorLinkedin.setText(linkedinError.equals("") ? " " : linkedinError);
+        return linkedinError.equals("");
+    }
+
+    public boolean verifyFormato() {
+        boolean formatoB = buttonGroupFormato.getSelection() != null;
+        this.jErrorFormato.setText(formatoB ? " " : "Seleccione un opcion");
+        return formatoB;
+    }
 
     public void reset() {
         this.jTextFieldCedula.setText("");
@@ -249,12 +431,64 @@ public class AltaPostulanteP extends javax.swing.JFrame {
         this.jTextFieldNombre.setText("");
         this.jTextFieldTelefono.setText("");
         this.buttonGroupFormato.clearSelection();
+        this.jErrorCedula.setText(" ");
+        this.jErrorNombre.setText(" ");;
+        this.jErrorDireccion.setText(" ");
+        this.jErrorFormato.setText(" ");
+        this.jErrorLinkedin.setText(" ");
+        this.jErrorMail.setText(" ");
+        this.jErrorTelefono.setText(" ");
+    }
+
+    public String getNombre() {
+        return this.jTextFieldNombre.getText();
+    }
+
+    public String getCedula() {
+        return this.jTextFieldCedula.getText();
+    }
+
+    public String getDireccion() {
+        return this.jTextFieldDireccion.getText();
+    }
+
+    public String getTelefono() {
+        return this.jTextFieldTelefono.getText();
+    }
+
+    public String getMail() {
+        return this.jTextFieldMail.getText();
+    }
+
+    public String getLinkedin() {
+        return this.jTextFieldLinkedin.getText();
+    }
+
+    public String getFormato() {
+        String out = "";
+
+        for (Enumeration<AbstractButton> buttons = buttonGroupFormato.getElements(); buttons.hasMoreElements() && out.equals("");) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                out = button.getText();
+            }
+        }
+
+        return out;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupFormato;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JLabel jErrorCedula;
+    private javax.swing.JLabel jErrorDireccion;
+    private javax.swing.JLabel jErrorFormato;
+    private javax.swing.JLabel jErrorLinkedin;
+    private javax.swing.JLabel jErrorMail;
+    private javax.swing.JLabel jErrorNombre;
+    private javax.swing.JLabel jErrorTelefono;
     private javax.swing.JLabel jLabelCedula;
     private javax.swing.JLabel jLabelDireccion;
     private javax.swing.JLabel jLabelFormato;

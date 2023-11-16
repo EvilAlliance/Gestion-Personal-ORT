@@ -31,14 +31,19 @@ public class RegistroEvaluador extends javax.swing.JFrame {
 
         jLabelRegistroEvaluador = new javax.swing.JLabel();
         jButtonAtras = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelCedula = new javax.swing.JLabel();
+        jLabelDireccion = new javax.swing.JLabel();
+        jLabelAno = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldCedula = new javax.swing.JTextField();
+        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldAno = new javax.swing.JTextField();
+        jErrorNombre = new javax.swing.JLabel();
+        jErrorCedula = new javax.swing.JLabel();
+        jErrorDireccion = new javax.swing.JLabel();
+        jErrorAno = new javax.swing.JLabel();
+        jButtonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -61,54 +66,106 @@ public class RegistroEvaluador extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre: ");
+        jLabelNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelNombre.setText("Nombre: ");
 
-        jLabel2.setText("Cedula: ");
+        jLabelCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelCedula.setText("Cedula: ");
 
-        jLabel3.setText("Dirección");
+        jLabelDireccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelDireccion.setText("Dirección");
 
-        jLabel4.setText("Año");
+        jLabelAno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelAno.setText("Año");
 
-        jTextField1.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
 
-        jTextField2.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCedula.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldCedulaKeyPressed(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldDireccion.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldDireccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldDireccionKeyReleased(evt);
+            }
+        });
 
-        jTextField4.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldAno.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldAno.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
+        jTextFieldAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldAnoKeyReleased(evt);
+            }
+        });
+
+        jErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorNombre.setText(" ");
+
+        jErrorCedula.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorCedula.setText(" ");
+
+        jErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorDireccion.setText(" ");
+
+        jErrorAno.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorAno.setText(" ");
+
+        jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegistrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonAtras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1))
-                        .addGap(11, 11, 11)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(jLabelRegistroEvaluador)
                 .addGap(77, 77, 77))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDireccion)
+                    .addComponent(jLabelAno)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jLabelCedula))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jErrorNombre)
+                            .addComponent(jErrorCedula)
+                            .addComponent(jErrorDireccion))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jErrorAno)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAtras)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonRegistrar))
+                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldAno, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldCedula, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,22 +174,32 @@ public class RegistroEvaluador extends javax.swing.JFrame {
                 .addComponent(jLabelRegistroEvaluador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jErrorNombre)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabelCedula)
+                    .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jErrorCedula)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabelDireccion)
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jErrorDireccion)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAtras)
+                    .addComponent(jLabelAno)
+                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jErrorAno)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonAtras)
+                    .addComponent(jButtonRegistrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,23 +218,83 @@ public class RegistroEvaluador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
-    public void reset(){
-        this.jTextField1.setText("");
-        this.jTextField2.setText("");
-       this.jTextField3.setText("");
-        this.jTextField4.setText("");
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        this.verifyNombre();
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCedulaKeyPressed
+        this.verifyCedula();
+    }//GEN-LAST:event_jTextFieldCedulaKeyPressed
+
+    private void jTextFieldDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDireccionKeyReleased
+        this.verifyDireccion();
+    }//GEN-LAST:event_jTextFieldDireccionKeyReleased
+
+    private void jTextFieldAnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAnoKeyReleased
+        this.verifyAno();
+    }//GEN-LAST:event_jTextFieldAnoKeyReleased
+
+    private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
+        boolean nombreOK = this.verifyNombre();
+        boolean cedulaOK = this.verifyCedula();
+        boolean direccionOK = this.verifyDireccion();
+        boolean anoOK = this.verifyAno();
+
+        if (nombreOK && cedulaOK && direccionOK && anoOK) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
+    public void reset() {
+        this.jTextFieldNombre.setText("");
+        this.jTextFieldCedula.setText("");
+        this.jTextFieldDireccion.setText("");
+        this.jTextFieldAno.setText("");
+        this.jErrorNombre.setText(" ");
+        this.jErrorCedula.setText(" ");
+        this.jErrorDireccion.setText(" ");
+        this.jErrorAno.setText(" ");
     }
-    
+
+    public boolean verifyNombre() {
+        String nombreE = Controller.verifyPostulanteNombre(this.jTextFieldNombre.getText());
+        this.jErrorNombre.setText(nombreE.equals("") ? " " : nombreE);
+        return nombreE.equals("");
+    }
+
+    public boolean verifyCedula() {
+        String cedulaE = Controller.verifyPostulanteCedula(this.jTextFieldCedula.getText());
+        this.jErrorCedula.setText(cedulaE.equals("") ? " " : cedulaE);
+        return cedulaE.equals("");
+    }
+
+    public boolean verifyDireccion() {
+        String direccionE = Controller.verifyPostulanteNombre(this.jTextFieldDireccion.getText());
+        this.jErrorDireccion.setText(direccionE.equals("") ? " " : direccionE);
+        return direccionE.equals("");
+    }
+
+    public boolean verifyAno() {
+        String anoE = Controller.verifyPostulanteNombre(this.jTextFieldAno.getText());
+        this.jErrorAno.setText(anoE.equals("") ? " " : anoE);
+        return anoE.equals("");
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JLabel jErrorAno;
+    private javax.swing.JLabel jErrorCedula;
+    private javax.swing.JLabel jErrorDireccion;
+    private javax.swing.JLabel jErrorNombre;
+    private javax.swing.JLabel jLabelAno;
+    private javax.swing.JLabel jLabelCedula;
+    private javax.swing.JLabel jLabelDireccion;
+    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelRegistroEvaluador;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldAno;
+    private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

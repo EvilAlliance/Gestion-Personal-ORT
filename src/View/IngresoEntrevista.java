@@ -30,7 +30,7 @@ public class IngresoEntrevista extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPaneIntrevistador = new javax.swing.JScrollPane();
-        jListIntrevistador = new javax.swing.JList<>();
+        jListEntrevistador = new javax.swing.JList<>();
         jScrollPanePostulante = new javax.swing.JScrollPane();
         jListPostulante = new javax.swing.JList<>();
         jLabelIngresoEntrevista = new javax.swing.JLabel();
@@ -40,6 +40,9 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         jLabelPostulante = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
+        jErrorPuntaje = new javax.swing.JLabel();
+        jErrorEntrevistador = new javax.swing.JLabel();
+        jErrorPostulante = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -53,18 +56,30 @@ public class IngresoEntrevista extends javax.swing.JFrame {
 
         jScrollPaneIntrevistador.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
-        jListIntrevistador.setBackground(new java.awt.Color(236, 236, 236));
-        jScrollPaneIntrevistador.setViewportView(jListIntrevistador);
+        jListEntrevistador.setBackground(new java.awt.Color(236, 236, 236));
+        jListEntrevistador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListEntrevistadorMouseClicked(evt);
+            }
+        });
+        jScrollPaneIntrevistador.setViewportView(jListEntrevistador);
 
         jScrollPanePostulante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jListPostulante.setBackground(new java.awt.Color(236, 236, 236));
+        jListPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListPostulanteMouseClicked(evt);
+            }
+        });
         jScrollPanePostulante.setViewportView(jListPostulante);
 
         jLabelIngresoEntrevista.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelIngresoEntrevista.setText("Ingreso de Entrevista");
 
         jLabelPuntaje.setText("Puntaje");
+
+        jSpinnerPuntaje.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         jLabelIntrevistador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelIntrevistador.setText("Entrevistador");
@@ -80,6 +95,20 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         });
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGuardarMouseClicked(evt);
+            }
+        });
+
+        jErrorPuntaje.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorPuntaje.setText(" ");
+
+        jErrorEntrevistador.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorEntrevistador.setText(" ");
+
+        jErrorPostulante.setForeground(new java.awt.Color(255, 0, 0));
+        jErrorPostulante.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,14 +127,18 @@ public class IngresoEntrevista extends javax.swing.JFrame {
                                         .addComponent(jSpinnerPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(39, 39, 39)
-                                        .addComponent(jLabelPuntaje)))
+                                        .addComponent(jLabelPuntaje))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jErrorPuntaje)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabelIntrevistador)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelPostulante)
-                                    .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jErrorPostulante)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(jLabelIngresoEntrevista)
@@ -117,6 +150,10 @@ public class IngresoEntrevista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonGuardar)
                 .addGap(40, 40, 40))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jErrorEntrevistador)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +166,8 @@ public class IngresoEntrevista extends javax.swing.JFrame {
                         .addComponent(jLabelPuntaje)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinnerPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jErrorPuntaje))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelIntrevistador)
@@ -138,7 +176,11 @@ public class IngresoEntrevista extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPaneIntrevistador)
                             .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jErrorEntrevistador)
+                    .addComponent(jErrorPostulante))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardar))
@@ -160,20 +202,50 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
-    public void reset(){
-        this.jListIntrevistador.setListData(new String[0]);
+    private void jButtonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarMouseClicked
+        boolean entrevistadorOK = this.jListEntrevistador.getSelectedIndex() != -1;
+        boolean postulanteOK = this.jListPostulante.getSelectedIndex() != -1;
+        int puntaje = (int) this.jSpinnerPuntaje.getValue();
+        boolean puntakeOK = 0 <= puntaje && puntaje <= 100;
+        if (entrevistadorOK && postulanteOK && puntakeOK) {
+            this.dispose();
+        } else {
+            this.jErrorEntrevistador.setText(entrevistadorOK ? " " : "No hay selección");
+            this.jErrorPostulante.setText(postulanteOK ? " " : "No hay selección");
+            this.jErrorPuntaje.setText(postulanteOK ? " " : "0 - 100");
+        }
+    }//GEN-LAST:event_jButtonGuardarMouseClicked
+
+    private void jListPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListPostulanteMouseClicked
+        boolean postulanteOK = this.jListPostulante.getSelectedIndex() != -1;
+        this.jErrorPostulante.setText(postulanteOK ? " " : "No hay selección");
+    }//GEN-LAST:event_jListPostulanteMouseClicked
+
+    private void jListEntrevistadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListEntrevistadorMouseClicked
+        boolean entrevistadorOK = this.jListEntrevistador.getSelectedIndex() != -1;
+        this.jErrorEntrevistador.setText(entrevistadorOK ? " " : "No hay selección");    }//GEN-LAST:event_jListEntrevistadorMouseClicked
+
+    public void reset() {
+        this.jListEntrevistador.setListData(new String[0]);
         this.jListPostulante.setListData(new String[0]);
         this.jSpinnerPuntaje.setValue(0);
+        this.jErrorEntrevistador.setText(" ");
+        this.jErrorPostulante.setText(" ");
+        this.jErrorPuntaje.setText(" ");
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JLabel jErrorEntrevistador;
+    private javax.swing.JLabel jErrorPostulante;
+    private javax.swing.JLabel jErrorPuntaje;
     private javax.swing.JLabel jLabelIngresoEntrevista;
     private javax.swing.JLabel jLabelIntrevistador;
     private javax.swing.JLabel jLabelPostulante;
     private javax.swing.JLabel jLabelPuntaje;
-    private javax.swing.JList<String> jListIntrevistador;
+    private javax.swing.JList<String> jListEntrevistador;
     private javax.swing.JList<String> jListPostulante;
     private javax.swing.JScrollPane jScrollPaneIntrevistador;
     private javax.swing.JScrollPane jScrollPanePostulante;

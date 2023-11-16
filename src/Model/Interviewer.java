@@ -26,7 +26,7 @@ public class Interviewer extends Interviewee {
     }
 
     public Interviewer(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String anEntryYear) {
-        super(aName, aDni, aHomeDirection, aPhone, anEmail, null);
+        super(aName, aDni, aHomeDirection, aPhone, anEmail, null, null, null);
         this.setEntryYear(anEntryYear);
     }
     
