@@ -252,7 +252,6 @@ public class AltaPostulanteS extends javax.swing.JFrame {
             this.jErrorTemaNivel.setText("Ningun tema seleccionado");
         } else {
             this.jErrorTemaNivel.setText(" ");
-            boolean isThere = false;
             Experiencia there = new Experiencia(nivel, tema);
             if (!this.modelo.contains(there) || this.modelo.isEmpty()) {
                 this.modelo.addElement(new Experiencia(nivel, tema));
