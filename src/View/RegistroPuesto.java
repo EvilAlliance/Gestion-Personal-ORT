@@ -7,6 +7,11 @@ package View;
 import Controller.Controller;
 import Model.Topic;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -117,11 +122,23 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jScrollPaneTema.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jListTema.setBackground(new java.awt.Color(236, 236, 236));
+        jListTema.setToolTipText("Doble click para agregar");
+        jListTema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListTemaMouseClicked(evt);
+            }
+        });
         jScrollPaneTema.setViewportView(jListTema);
 
         jScrollPaneTemaSelected.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
 
         jListTemaSelected.setBackground(new java.awt.Color(236, 236, 236));
+        jListTemaSelected.setToolTipText("Doble click para Eliminar");
+        jListTemaSelected.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListTemaSelectedMouseClicked(evt);
+            }
+        });
         jScrollPaneTemaSelected.setViewportView(jListTemaSelected);
 
         jErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
@@ -187,7 +204,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabelRegistroPuesto)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,13 +225,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
                     .addComponent(jScrollPaneTemaSelected)
                     .addComponent(jScrollPaneTema)
                     .addComponent(jLabelTema))
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(jErrorTema)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAtras)
                     .addComponent(jButtomRegistrar))
-                .addContainerGap())
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,6 +255,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
         boolean temaOK = this.jListTemaSelected.getModel().getSize() > 0;
 
         if (nombreOK && tipoOK && temaOK) {
+            Object[] experienciaE = this.modelo.toArray();
+            Topic[] topic = new Topic[experienciaE.length];
+
+            for (int i = 0; i < topic.length; i++) {
+                topic[i] = (Topic) topic[i];
+            }
+            
             this.dispose();
         } else {
             this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");
@@ -263,6 +287,28 @@ public class RegistroPuesto extends javax.swing.JFrame {
         this.jErrorNombre.setText(!this.jTextFieldNombre.getText().equals("") ? " " : "No debe estar vacio");
     }//GEN-LAST:event_jTextFieldNombreKeyReleased
 
+    private void jListTemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListTemaMouseClicked
+        if (evt.getClickCount() == 2) {
+            evt.consume();
+            int index = this.jListTema.getSelectedIndex();
+            Topic selected = this.modelo.remove(index);
+            this.modeloSelected.addElement(selected);
+            this.jListTema.setModel(this.modelo);
+            this.jListTemaSelected.setModel(this.modeloSelected);
+        }
+    }//GEN-LAST:event_jListTemaMouseClicked
+
+    private void jListTemaSelectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListTemaSelectedMouseClicked
+        if (evt.getClickCount() == 2) {
+            evt.consume();
+            int index = this.jListTemaSelected.getSelectedIndex();
+            Topic selected = this.modeloSelected.remove(index);
+            this.modelo.addElement(selected);
+            this.jListTema.setModel(this.modelo);
+            this.jListTemaSelected.setModel(this.modeloSelected);
+        }
+    }//GEN-LAST:event_jListTemaSelectedMouseClicked
+
     public void reset() {
         this.jTextFieldNombre.setText("");
         this.buttonGroupTipo.clearSelection();
@@ -271,6 +317,29 @@ public class RegistroPuesto extends javax.swing.JFrame {
         this.jErrorNombre.setText(" ");
         this.jErrorTema.setText(" ");
         this.jErrorTipo.setText(" ");
+        this.modelo = new DefaultListModel<Topic>();
+        this.jListTema.setModel(this.modelo);
+        this.modeloSelected = new DefaultListModel<Topic>();
+        this.jListTemaSelected.setModel(this.modeloSelected);
+    }
+
+    public void set(ArrayList<Topic> temaList) {
+        this.modelo.addAll((Collection<Topic>) temaList);
+        this.jListTema.setModel(this.modelo);
+    }
+
+    public String getFormato() {
+        String out = "";
+
+        for (Enumeration<AbstractButton> buttons = buttonGroupTipo.getElements(); buttons.hasMoreElements() && out.equals("");) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                out = button.getText();
+            }
+        }
+
+        return out;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -293,4 +362,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneTemaSelected;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel<Topic> modeloSelected;
+    private DefaultListModel<Topic> modelo;
+
 }

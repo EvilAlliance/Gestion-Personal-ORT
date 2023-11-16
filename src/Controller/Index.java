@@ -9,6 +9,7 @@ import Model.*;
 public class Index {
 
     public static void main(String[] args) {
+        Controller.initDevMode();
         Controller.init();
 
         Interviewee x;
@@ -21,7 +22,7 @@ public class Index {
         z = new Interview(y, x, "3", "pasa raspando");
 
         JobPosition w;
-        w = new JobPosition("Jefe Tecnico de Mantenimiento", "Supervisacion");
+        w = new JobPosition("Jefe Tecnico de Mantenimiento", "Supervisacion", null);
 
         Topic v;
         v = new Topic("NO C ME OCURRE NINGUN NOMBRE", "D:");

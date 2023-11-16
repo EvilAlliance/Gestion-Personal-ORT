@@ -1,16 +1,15 @@
 package Model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
 public class JobPosition {
+
     private String positionName;
     private String positionType;
-    private ArrayList<String> requiredAreaExpertise;
+    private Topic[] requiredAreaExpertise;
 
     public String getPositionName() {
         return this.positionName;
@@ -29,21 +28,22 @@ public class JobPosition {
     }
 
     //ponele
-    public String getRequiredAreaExpertise(int index) {
-        return this.requiredAreaExpertise.get(index);
+    public void setRequiredAreaExpertise(Topic[] givenTopics) {
+        this.requiredAreaExpertise = givenTopics;
     }
 
-    public void addRequiredAreaExpertise(String givenRequiredAreaExpertise) {
-        this.requiredAreaExpertise.add(givenRequiredAreaExpertise);
+    public Topic[] getRequiredAreaExpertise() {
+        return this.requiredAreaExpertise;
     }
-    
-    public JobPosition(String aPositionName, String aPositionType){
+
+    public JobPosition(String aPositionName, String aPositionType, Topic[] topic) {
         this.setPositionName(aPositionName);
         this.setPositionType(aPositionType);
+        this.setRequiredAreaExpertise(topic);
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Puesto: " + this.getPositionName() + "\nTipo de Puesto: " + this.getPositionType();
     }
 }
