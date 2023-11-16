@@ -33,13 +33,17 @@ public class Controller {
     private static final RegistroEvaluador registroEvaluador = new RegistroEvaluador();
     private static final ArrayList<Topic> topicList = new ArrayList<Topic>();
     private static final ArrayList<Interviewee> intervieweeList = new ArrayList<Interviewee>();
+    private static final ArrayList<JobPosition> jobPositionList = new ArrayList<JobPosition>();
 
-    public static void init() {
+    public static void initDevMode() {
         if (devMode) {
             topicList.add(new Topic("asdfasdfasdf", "asdf"));
             topicList.add(new Topic("asddfasdf", "asdf"));
             topicList.add(new Topic("asdf", "asdf"));
         }
+    }
+
+    public static void init() {
         menu.setVisible(true);
     }
 
@@ -100,10 +104,10 @@ public class Controller {
         return altaPostulanteP.getFormato();
     }
 
-    public static void addPostulante(String nombre, String cedula, String direccion, String telefono, String mail, String linkedin,String formato, Experiencia[] experiencia) {
-        intervieweeList.add(new Interviewee(nombre, cedula, direccion, telefono, mail, linkedin,formato, experiencia));
+    public static void addPostulante(String nombre, String cedula, String direccion, String telefono, String mail, String linkedin, String formato, Experiencia[] experiencia) {
+        intervieweeList.add(new Interviewee(nombre, cedula, direccion, telefono, mail, linkedin, formato, experiencia));
     }
-    
+
     public static void disposeAltaPostulante() {
         altaPostulanteP.dispose();
     }
@@ -139,9 +143,14 @@ public class Controller {
 
     public static void initRegistroPuesto() {
         registroPuesto.reset();
+        registroPuesto.set(topicList);
         registroPuesto.setVisible(true);
     }
 
+    public static void addPuesto(String nombre, String formato, Topic[] topics){
+        jobPositionList.add(new JobPosition(nombre, formato, topics));
+    }
+    
     public static void initConsultaPuesto() {
         consultaPuesto.reset();
         consultaPuesto.setVisible(true);
