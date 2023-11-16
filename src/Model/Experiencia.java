@@ -11,9 +11,9 @@ package Model;
 public class Experiencia {
 
     private int nivel;
-    private Topic topic;
+    private Tema topic;
 
-    public Experiencia(int nivel, Topic topic) {
+    public Experiencia(int nivel, Tema topic) {
         this.setNivel(nivel);
         this.setTopic(topic);
     }
@@ -26,11 +26,11 @@ public class Experiencia {
         this.nivel = nivel;
     }
 
-    public Topic getTopic() {
+    public Tema getTopic() {
         return topic;
     }
 
-    public void setTopic(Topic topic) {
+    public void setTopic(Tema topic) {
         this.topic = topic;
     }
 

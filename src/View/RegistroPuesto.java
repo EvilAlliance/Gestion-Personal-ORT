@@ -5,7 +5,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Topic;
+import Model.Tema;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -256,10 +256,10 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         if (nombreOK && tipoOK && temaOK) {
             Object[] experienciaE = this.modelo.toArray();
-            Topic[] topic = new Topic[experienciaE.length];
+            Tema[] topic = new Tema[experienciaE.length];
 
             for (int i = 0; i < topic.length; i++) {
-                topic[i] = (Topic) topic[i];
+                topic[i] = (Tema) topic[i];
             }
             
             this.dispose();
@@ -291,7 +291,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             evt.consume();
             int index = this.jListTema.getSelectedIndex();
-            Topic selected = this.modelo.remove(index);
+            Tema selected = this.modelo.remove(index);
             this.modeloSelected.addElement(selected);
             this.jListTema.setModel(this.modelo);
             this.jListTemaSelected.setModel(this.modeloSelected);
@@ -302,7 +302,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             evt.consume();
             int index = this.jListTemaSelected.getSelectedIndex();
-            Topic selected = this.modeloSelected.remove(index);
+            Tema selected = this.modeloSelected.remove(index);
             this.modelo.addElement(selected);
             this.jListTema.setModel(this.modelo);
             this.jListTemaSelected.setModel(this.modeloSelected);
@@ -312,19 +312,19 @@ public class RegistroPuesto extends javax.swing.JFrame {
     public void reset() {
         this.jTextFieldNombre.setText("");
         this.buttonGroupTipo.clearSelection();
-        this.jListTema.setListData(new Topic[0]);
-        this.jListTemaSelected.setListData(new Topic[0]);
+        this.jListTema.setListData(new Tema[0]);
+        this.jListTemaSelected.setListData(new Tema[0]);
         this.jErrorNombre.setText(" ");
         this.jErrorTema.setText(" ");
         this.jErrorTipo.setText(" ");
-        this.modelo = new DefaultListModel<Topic>();
+        this.modelo = new DefaultListModel<Tema>();
         this.jListTema.setModel(this.modelo);
-        this.modeloSelected = new DefaultListModel<Topic>();
+        this.modeloSelected = new DefaultListModel<Tema>();
         this.jListTemaSelected.setModel(this.modeloSelected);
     }
 
-    public void set(ArrayList<Topic> temaList) {
-        this.modelo.addAll((Collection<Topic>) temaList);
+    public void set(ArrayList<Tema> temaList) {
+        this.modelo.addAll((Collection<Tema>) temaList);
         this.jListTema.setModel(this.modelo);
     }
 
@@ -353,8 +353,8 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRegistroPuesto;
     private javax.swing.JLabel jLabelTema;
     private javax.swing.JLabel jLabelTipo;
-    private javax.swing.JList<Topic> jListTema;
-    private javax.swing.JList<Topic> jListTemaSelected;
+    private javax.swing.JList<Tema> jListTema;
+    private javax.swing.JList<Tema> jListTemaSelected;
     private javax.swing.JRadioButton jRadioButtonMixto;
     private javax.swing.JRadioButton jRadioButtonPresencial;
     private javax.swing.JRadioButton jRadioButtonRemoto;
@@ -362,7 +362,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneTemaSelected;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
-    private DefaultListModel<Topic> modeloSelected;
-    private DefaultListModel<Topic> modelo;
+    private DefaultListModel<Tema> modeloSelected;
+    private DefaultListModel<Tema> modelo;
 
 }

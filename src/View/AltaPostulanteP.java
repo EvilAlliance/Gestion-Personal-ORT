@@ -382,19 +382,19 @@ public class AltaPostulanteP extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     public boolean verifyNombre() {
-        String nombreError = Controller.verifyPostulanteNombre(this.jTextFieldNombre.getText());
+        String nombreError = Controller.verifyPersonaNombre(this.jTextFieldNombre.getText());
         this.jErrorNombre.setText(nombreError.equals("") ? " " : nombreError);
         return nombreError.equals("");
     }
 
     public boolean verifyCedula() {
-        String cedulaError = Controller.verifyPostulanteCedula(this.jTextFieldCedula.getText());
+        String cedulaError = Controller.verifyPersonaCedula(this.jTextFieldCedula.getText());
         this.jErrorCedula.setText(cedulaError.equals("") ? " " : cedulaError);
         return cedulaError.equals("");
     }
 
     public boolean verifyDireccion() {
-        String direccionError = Controller.verifyPostulanteDireccion(this.jTextFieldDireccion.getText());
+        String direccionError = Controller.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
         this.jErrorDireccion.setText(direccionError.equals("") ? " " : direccionError);
         return direccionError.equals("");
     }

@@ -5,7 +5,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Topic;
+import Model.Tema;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.awt.Color;
@@ -245,7 +245,7 @@ public class AltaPostulanteS extends javax.swing.JFrame {
     private void jButtonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseClicked
         this.jErrorExperiencia.setText(" ");
         int nivel = (int) this.jSpinnerNivel.getValue();
-        Topic tema = (Topic) jComboBoxTema.getSelectedItem();
+        Tema tema = (Tema) jComboBoxTema.getSelectedItem();
         if (nivel < 1 || nivel > 10) {
             this.jErrorTemaNivel.setText("Nivel 1 - 10");
         } else if (tema == null) {
@@ -284,9 +284,9 @@ public class AltaPostulanteS extends javax.swing.JFrame {
         this.jListExperiencia.setModel(this.modelo);
     }
 
-    public void set(ArrayList<Topic> topicList) {
-        DefaultComboBoxModel<Topic> temaModelo = new DefaultComboBoxModel<>();
-        temaModelo.addAll((Collection<Topic>) topicList);
+    public void set(ArrayList<Tema> topicList) {
+        DefaultComboBoxModel<Tema> temaModelo = new DefaultComboBoxModel<>();
+        temaModelo.addAll((Collection<Tema>) topicList);
         this.jComboBoxTema.setModel(temaModelo);
     }
 
@@ -295,7 +295,7 @@ public class AltaPostulanteS extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JComboBox<Topic> jComboBoxTema;
+    private javax.swing.JComboBox<Tema> jComboBoxTema;
     private javax.swing.JLabel jErrorExperiencia;
     private javax.swing.JLabel jErrorTemaNivel;
     private javax.swing.JLabel jLabelExperiencia;

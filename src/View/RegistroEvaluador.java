@@ -241,6 +241,7 @@ public class RegistroEvaluador extends javax.swing.JFrame {
         boolean anoOK = this.verifyAno();
 
         if (nombreOK && cedulaOK && direccionOK && anoOK) {
+            Controller.addEvaluador(this.jTextFieldNombre.getText(), this.jTextFieldCedula.getText(), this.jTextFieldDireccion.getText(), this.jTextFieldAno.getText());
             this.dispose();
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
@@ -257,25 +258,25 @@ public class RegistroEvaluador extends javax.swing.JFrame {
     }
 
     public boolean verifyNombre() {
-        String nombreE = Controller.verifyPostulanteNombre(this.jTextFieldNombre.getText());
+        String nombreE = Controller.verifyPersonaNombre(this.jTextFieldNombre.getText());
         this.jErrorNombre.setText(nombreE.equals("") ? " " : nombreE);
         return nombreE.equals("");
     }
 
     public boolean verifyCedula() {
-        String cedulaE = Controller.verifyPostulanteCedula(this.jTextFieldCedula.getText());
+        String cedulaE = Controller.verifyPersonaCedula(this.jTextFieldCedula.getText());
         this.jErrorCedula.setText(cedulaE.equals("") ? " " : cedulaE);
         return cedulaE.equals("");
     }
 
     public boolean verifyDireccion() {
-        String direccionE = Controller.verifyPostulanteNombre(this.jTextFieldDireccion.getText());
+        String direccionE = Controller.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
         this.jErrorDireccion.setText(direccionE.equals("") ? " " : direccionE);
         return direccionE.equals("");
     }
 
     public boolean verifyAno() {
-        String anoE = Controller.verifyPostulanteNombre(this.jTextFieldAno.getText());
+        String anoE = Controller.verifyEntrevistadorAno(this.jTextFieldAno.getText());
         this.jErrorAno.setText(anoE.equals("") ? " " : anoE);
         return anoE.equals("");
     }

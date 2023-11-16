@@ -7,7 +7,6 @@ package Controller;
 import Model.*;
 import View.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -31,15 +30,17 @@ public class Controller {
     private static final ConsultaPuesto consultaPuesto = new ConsultaPuesto();
     private static final RegistroPuesto registroPuesto = new RegistroPuesto();
     private static final RegistroEvaluador registroEvaluador = new RegistroEvaluador();
-    private static final ArrayList<Topic> topicList = new ArrayList<Topic>();
-    private static final ArrayList<Interviewee> intervieweeList = new ArrayList<Interviewee>();
-    private static final ArrayList<JobPosition> jobPositionList = new ArrayList<JobPosition>();
+    private static final ArrayList<Tema> topicList = new ArrayList<Tema>();
+
+    private static final ArrayList<Postulante> postulanteLista = new ArrayList<Postulante>();
+    private static final ArrayList<Puesto> puestoLista = new ArrayList<Puesto>();
+    private static final ArrayList<Entrevistador> entrevistadorLista = new ArrayList<Entrevistador>();
 
     public static void initDevMode() {
         if (devMode) {
-            topicList.add(new Topic("asdfasdfasdf", "asdf"));
-            topicList.add(new Topic("asddfasdf", "asdf"));
-            topicList.add(new Topic("asdf", "asdf"));
+            topicList.add(new Tema("asdfasdfasdf", "asdf"));
+            topicList.add(new Tema("asddfasdf", "asdf"));
+            topicList.add(new Tema("asdf", "asdf"));
         }
     }
 
@@ -105,7 +106,7 @@ public class Controller {
     }
 
     public static void addPostulante(String nombre, String cedula, String direccion, String telefono, String mail, String linkedin, String formato, Experiencia[] experiencia) {
-        intervieweeList.add(new Interviewee(nombre, cedula, direccion, telefono, mail, linkedin, formato, experiencia));
+        postulanteLista.add(new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato, experiencia));
     }
 
     public static void disposeAltaPostulante() {
@@ -133,7 +134,7 @@ public class Controller {
     }
 
     public static void addTematica(String nombre, String descripcion) {
-        topicList.add(new Topic(nombre, descripcion));
+        topicList.add(new Tema(nombre, descripcion));
     }
 
     public static void initConsultaTematica() {
@@ -147,10 +148,10 @@ public class Controller {
         registroPuesto.setVisible(true);
     }
 
-    public static void addPuesto(String nombre, String formato, Topic[] topics){
-        jobPositionList.add(new JobPosition(nombre, formato, topics));
+    public static void addPuesto(String nombre, String formato, Tema[] topics) {
+        puestoLista.add(new Puesto(nombre, formato, topics));
     }
-    
+
     public static void initConsultaPuesto() {
         consultaPuesto.reset();
         consultaPuesto.setVisible(true);
@@ -161,27 +162,35 @@ public class Controller {
         registroEvaluador.setVisible(true);
     }
 
-    public static String verifyPostulanteNombre(String nombre) {
-        return Interviewee.verifyName(nombre);
+    public static void addEvaluador(String nombre, String Cedula, String direccion, String ano) {
+        entrevistadorLista.add(new Entrevistador(nombre, Cedula, direccion, ano));
     }
 
-    public static String verifyPostulanteCedula(String cedula) {
-        return Interviewee.verifyDni(cedula);
+    public static String verifyPersonaNombre(String nombre) {
+        return Persona.verifyNombre(nombre);
+    }
+
+    public static String verifyPersonaCedula(String cedula) {
+        return Persona.verifyCedula(cedula);
     }
 
     public static String verifyPostulanteTelefono(String telefono) {
-        return Interviewee.verifyPhone(telefono);
+        return Postulante.verifyTelefono(telefono);
     }
 
-    public static String verifyPostulanteDireccion(String direccion) {
-        return Interviewee.verifyHomeDirection(direccion);
+    public static String verifyPersonaDireccion(String direccion) {
+        return Persona.verifyDireccion(direccion);
     }
 
     public static String verifyPostulanteMail(String mail) {
-        return Interviewee.verifyMail(mail);
+        return Postulante.verifyMail(mail);
     }
 
     public static String verifyPostulanteLinkedin(String linkedin) {
-        return Interviewee.verifyLinkedin(linkedin);
+        return Postulante.verifyLinkedin(linkedin);
+    }
+    
+    public static String verifyEntrevistadorAno(String ano){
+        return Entrevistador.verifyAno(ano);
     }
 }
