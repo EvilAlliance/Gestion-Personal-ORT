@@ -7,7 +7,6 @@ package Model;
  */
 public class Entrevista {
     private Entrevistador entrevistador;
-    private Postulante postulante;
     private String puntaje;
     private String comentario;
     private static int interviewNumber = 0;
@@ -19,14 +18,6 @@ public class Entrevista {
 
     public void setEntrevistador(Entrevistador givenInterviewer) {
         this.entrevistador = givenInterviewer;
-    }
-    
-    public Postulante getPostulante(){
-        return this.postulante;
-    }
-    
-    public void setPostulante(Postulante givenInterviewee){
-        this.postulante = givenInterviewee;
     }
     
     public String getPuntaje() {
@@ -57,9 +48,8 @@ public class Entrevista {
         return (interviewer != null) ? "Entrevistador valido" : "No existe ningun entrevistador con esos datos";
     }
     
-    public Entrevista(Entrevistador anInterviewer, Postulante anInterviewee, String anInterviewScore, String interviewCommentaries){
+    public Entrevista(Entrevistador anInterviewer, String anInterviewScore, String interviewCommentaries){
         this.setEntrevistador(anInterviewer);
-        this.setPostulante(anInterviewee);
         this.setPuntaje(anInterviewScore);
         this.setComentario(interviewCommentaries);
         interviewNumber++;
@@ -67,6 +57,6 @@ public class Entrevista {
     
     @Override
     public String toString(){
-        return "Entrevistador: " + this.getEntrevistador().getNombre() + "\nEntrevistado: " + this.getPostulante().getNombre() + "\nPuntaje: " + this.getPuntaje() + "\nComentarios: " + this.getComentario();
+        return "Entrevistador: " + this.getEntrevistador().getNombre() + "\nPuntaje: " + this.getPuntaje() + "\nComentarios: " + this.getComentario();
     }
 }

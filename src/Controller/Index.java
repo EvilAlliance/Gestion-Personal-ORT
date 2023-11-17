@@ -12,6 +12,8 @@ public class Index {
         Controller.initDevMode();
         Controller.init();
 
+        System.out.println(new Pintura("a","akkasjdfkashdjasdhfjaksdfajsdkaaaa").searchBusqueda());
+        
         Postulante x;
         x = new Postulante("Pedro Chialanza", "123456789", "algun - lugar123", "1123413451345", "adsgagasgasd", "linkedin", null, null);
 
@@ -19,7 +21,7 @@ public class Index {
         y = new Entrevistador("Leandro Meneses", "123456789", "algun - lugar123", "1990");
 
         Entrevista z;
-        z = new Entrevista(y, x, "3", "pasa raspando");
+        z = new Entrevista(y, "3", "pasa raspando");
 
         Puesto w;
         w = new Puesto("Jefe Tecnico de Mantenimiento", "Supervisacion", null);

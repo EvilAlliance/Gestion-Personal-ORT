@@ -33,9 +33,4 @@ public class Entrevistador extends Persona {
         super(aName, aDni, aHomeDirection);
         this.setAnoEntrada(anEntryYear);
     }
-
-    @Override
-    public String toString() {
-        return "" + this.getNombre() + " (" + this.getCedula() + ") - " + this.getAnoEntrada();
-    }
 }

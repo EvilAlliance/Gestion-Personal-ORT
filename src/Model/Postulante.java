@@ -14,7 +14,7 @@ public class Postulante extends Persona{
     private String linkedin;
     private String formato;
     private Experiencia[] experiencia;
-    private static ArrayList<Entrevista> entrevistas = new ArrayList<>();
+    private ArrayList<Entrevista> entrevistas = new ArrayList<>();
 
     public String getMail() {
         return this.mail;
@@ -57,6 +57,14 @@ public class Postulante extends Persona{
         return this.experiencia;
     }
 
+    public void setEntrevistas(ArrayList<Entrevista> entrevistas){
+        this.entrevistas = entrevistas;
+    }
+    
+    public ArrayList<Entrevista> getEntrevistas(){
+        return this.entrevistas;
+    }
+    
     //empiezan los verifiers
 
     public static String verifyTelefono(String phone) {
@@ -89,8 +97,5 @@ public class Postulante extends Persona{
         this.setExperiencia(experiencia);
     }
 
-    @Override
-    public String toString() {
-        return this.getNombre() + " (" + this.getCedula() + ")";
-    }
+    
 }

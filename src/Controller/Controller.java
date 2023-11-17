@@ -30,7 +30,7 @@ public class Controller {
     private static final ConsultaPuesto consultaPuesto = new ConsultaPuesto();
     private static final RegistroPuesto registroPuesto = new RegistroPuesto();
     private static final RegistroEvaluador registroEvaluador = new RegistroEvaluador();
-    private static final ArrayList<Tema> topicList = new ArrayList<Tema>();
+    private static final ArrayList<Tema> TemaList = new ArrayList<Tema>();
 
     private static final ArrayList<Postulante> postulanteLista = new ArrayList<Postulante>();
     private static final ArrayList<Puesto> puestoLista = new ArrayList<Puesto>();
@@ -38,9 +38,18 @@ public class Controller {
 
     public static void initDevMode() {
         if (devMode) {
-            topicList.add(new Tema("asdfasdfasdf", "asdf"));
-            topicList.add(new Tema("asddfasdf", "asdf"));
-            topicList.add(new Tema("asdf", "asdf"));
+            TemaList.add(new Tema("asdfasdfasdf", "asdf"));
+            TemaList.add(new Tema("asddfasdf", "asdf"));
+            TemaList.add(new Tema("asdf", "asdf"));
+            entrevistadorLista.add(new Entrevistador("Leandro Meneses", "123456789", "algun - lugar 123", "1990"));
+            entrevistadorLista.add(new Entrevistador("PEPE Meneses", "123453789", "PEPE - lugar 2123", "1190"));
+            entrevistadorLista.add(new Entrevistador("PEdro Meneses", "123345689", "coca - lugar 2123", "1990"));
+            Experiencia[] prueba = {new Experiencia(2, TemaList.get(0)), new Experiencia(8, TemaList.get(2))};
+            postulanteLista.add(new Postulante("Pedro Chialanza", "123456789", "algun - lugar 1123", "122341345", "adsgagasga@gmail.com", "https://www.linkedin.com", "Precencial", prueba));
+            Experiencia[] prueba1 = {new Experiencia(5, TemaList.get(1)), new Experiencia(2, TemaList.get(2))};
+            postulanteLista.add(new Postulante("Leandro Chialanza", "123433789", "algun - lugar 1123", "114341345", "adsgasga@gmail.com", "https://www.linkedin.com", "Precencial", prueba1));
+            Experiencia[] prueba2 = {new Experiencia(7, TemaList.get(1)), new Experiencia(1, TemaList.get(0))};
+            postulanteLista.add(new Postulante("PEPe Chialanza", "123454489", "algun - lugar 1123", "113341345", "adsgaga@gmail.com", "https://www.linkedin.com", "Precencial", prueba2));
         }
     }
 
@@ -73,7 +82,7 @@ public class Controller {
             altaPostulanteS.reset();
             altaPostulanteP.reset();
         }
-        altaPostulanteS.set(topicList);
+        altaPostulanteS.set(TemaList);
         altaPostulanteS.setVisible(true);
     }
 
@@ -125,7 +134,13 @@ public class Controller {
 
     public static void initIngresoEntrevista() {
         ingresoEntrevista.reset();
+        ingresoEntrevista.set(postulanteLista, entrevistadorLista);
         ingresoEntrevista.setVisible(true);
+    }
+    
+    public static void addEntrevista(Postulante postulante, Entrevistador entrevistador, String puntaje, String comentario){
+        postulante.getEntrevistas().add(new Entrevista(entrevistador, puntaje, comentario));
+        System.out.println(postulante.getEntrevistas());
     }
 
     public static void initRegistroTematica() {
@@ -134,7 +149,7 @@ public class Controller {
     }
 
     public static void addTematica(String nombre, String descripcion) {
-        topicList.add(new Tema(nombre, descripcion));
+        TemaList.add(new Tema(nombre, descripcion));
     }
 
     public static void initConsultaTematica() {
@@ -144,7 +159,7 @@ public class Controller {
 
     public static void initRegistroPuesto() {
         registroPuesto.reset();
-        registroPuesto.set(topicList);
+        registroPuesto.set(TemaList);
         registroPuesto.setVisible(true);
     }
 
@@ -189,8 +204,8 @@ public class Controller {
     public static String verifyPostulanteLinkedin(String linkedin) {
         return Postulante.verifyLinkedin(linkedin);
     }
-    
-    public static String verifyEntrevistadorAno(String ano){
+
+    public static String verifyEntrevistadorAno(String ano) {
         return Entrevistador.verifyAno(ano);
     }
 }

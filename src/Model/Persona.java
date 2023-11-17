@@ -62,4 +62,9 @@ public class Persona {
         boolean minLength = homeDirectionP.length > 1 && homeDirectionP[homeDirectionP.length - 1].length() <= 4 && Verifiers.isNumber(homeDirectionP[homeDirectionP.length - 1]) && homeDirectionP[0].length() > 0;
         return minLength ? "" : "Formato: <Nombre> <Numero>";
     }
+    
+    @Override
+    public String toString() {
+        return this.getNombre() + " (" + this.getCedula() + ")";
+    }
 }
