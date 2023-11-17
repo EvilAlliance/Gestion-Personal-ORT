@@ -255,13 +255,14 @@ public class RegistroPuesto extends javax.swing.JFrame {
         boolean temaOK = this.jListTemaSelected.getModel().getSize() > 0;
 
         if (nombreOK && tipoOK && temaOK) {
-            Object[] experienciaE = this.modelo.toArray();
+            Object[] experienciaE = this.modeloSelected.toArray();
             Tema[] topic = new Tema[experienciaE.length];
 
             for (int i = 0; i < topic.length; i++) {
-                topic[i] = (Tema) topic[i];
+                topic[i] = (Tema) experienciaE[i];
             }
             
+            Controller.addPuesto(this.jTextFieldNombre.getText(),this.getFormato(), topic);
             this.dispose();
         } else {
             this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");

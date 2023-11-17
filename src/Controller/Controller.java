@@ -33,7 +33,7 @@ public class Controller {
     private static final ArrayList<Tema> temaList = new ArrayList<Tema>();
 
     private static final ArrayList<Postulante> postulanteLista = new ArrayList<Postulante>();
-    private static final ArrayList<Puesto> puestoLista = new ArrayList<Puesto>();
+    private static final ArrayList<Puesto> puestoList = new ArrayList<Puesto>();
     private static final ArrayList<Entrevistador> entrevistadorLista = new ArrayList<Entrevistador>();
 
     public static void initDevMode() {
@@ -53,9 +53,9 @@ public class Controller {
             Tema[] prueba01 = {temaList.get(1), temaList.get(0)};
             Tema[] prueba02 = {temaList.get(1)};
             Tema[] prueba03 = {temaList.get(0), temaList.get(2)};
-            puestoLista.add(new Puesto("pepe", "Presencil", prueba01));
-            puestoLista.add(new Puesto("jaaj", "Presencil", prueba02));
-            puestoLista.add(new Puesto("jaje", "Presencil", prueba03));
+            puestoList.add(new Puesto("pepe", "Presencil", prueba01));
+            puestoList.add(new Puesto("jaaj", "Presencil", prueba02));
+            puestoList.add(new Puesto("jaje", "Presencil", prueba03));
         }
     }
 
@@ -130,7 +130,12 @@ public class Controller {
 
     public static void initBajaPostulante() {
         bajaPostulante.reset();
+        bajaPostulante.set(postulanteLista);
         bajaPostulante.setVisible(true);
+    }
+    
+    public static void bajaPostulante(Postulante postulante){
+        postulanteLista.remove(postulante);
     }
 
     public static void initHistoriaPostulante() {
@@ -146,7 +151,6 @@ public class Controller {
 
     public static void addEntrevista(Postulante postulante, Entrevistador entrevistador, String puntaje, String comentario) {
         postulante.getEntrevistas().add(new Entrevista(entrevistador, puntaje, comentario));
-        System.out.println(postulante.getEntrevistas());
     }
 
     public static void initRegistroTematica() {
@@ -165,7 +169,7 @@ public class Controller {
     }
 
     public static ArrayList<Puesto> getPuestos() {
-        return puestoLista;
+        return puestoList;
     }
     
     public static ArrayList<Postulante> getPostulantes() {
@@ -179,7 +183,7 @@ public class Controller {
     }
 
     public static void addPuesto(String nombre, String formato, Tema[] topics) {
-        puestoLista.add(new Puesto(nombre, formato, topics));
+        puestoList.add(new Puesto(nombre, formato, topics));
     }
 
     public static void initConsultaPuesto() {

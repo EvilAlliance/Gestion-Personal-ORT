@@ -11,8 +11,6 @@ public class Index {
     public static void main(String[] args) {
         Controller.initDevMode();
         Controller.init();
-
-        System.out.println(new Pintura("a","akkasjdfkashdjasdhfjaksdfajsdkaaaa").searchBusqueda());
         
         Postulante x;
         x = new Postulante("Pedro Chialanza", "123456789", "algun - lugar123", "1123413451345", "adsgagasgasd", "linkedin", null, null);

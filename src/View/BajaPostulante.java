@@ -5,7 +5,11 @@
 package View;
 
 import Controller.Controller;
+import Model.Postulante;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -32,7 +36,7 @@ public class BajaPostulante extends javax.swing.JFrame {
         jLabelBajaPostulante = new javax.swing.JLabel();
         jButtonAtras = new javax.swing.JButton();
         jLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPanePostulante = new javax.swing.JScrollPane();
         jListPostulante = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,30 +66,38 @@ public class BajaPostulante extends javax.swing.JFrame {
         jLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel.setText("Doble Click para Eliminar");
 
-        jScrollPane1.setViewportView(jListPostulante);
+        jScrollPanePostulante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListPostulante.setBackground(new java.awt.Color(236, 236, 236));
+        jListPostulante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListPostulanteMouseClicked(evt);
+            }
+        });
+        jScrollPanePostulante.setViewportView(jListPostulante);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 154, Short.MAX_VALUE)
-                .addComponent(jLabelBajaPostulante)
-                .addGap(154, 154, 154))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(219, 219, 219)
                 .addComponent(jButtonAtras)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPanePostulante)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabelBajaPostulante)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +107,7 @@ public class BajaPostulante extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAtras)
                 .addContainerGap())
@@ -112,19 +124,36 @@ public class BajaPostulante extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
-    public void reset(){
-        this.jListPostulante.setListData(new String[0]);
+    public void reset() {
+        this.modelo = new DefaultListModel();
+        this.jListPostulante.setModel(modelo);
     }
-    
+
+    public void set(ArrayList<Postulante> postulantes) {
+        this.modelo.addAll((Collection<Postulante>) postulantes);
+        this.jListPostulante.setModel(this.modelo);
+    }
+
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Controller.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
+
+    private void jListPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListPostulanteMouseClicked
+        int clicks = evt.getClickCount();
+        if (clicks == 2) {
+            Postulante postulante = this.jListPostulante.getSelectedValue();
+            Controller.bajaPostulante(postulante);
+            this.modelo.removeElement(postulante);
+            this.jListPostulante.setModel(this.modelo);
+        }
+    }//GEN-LAST:event_jListPostulanteMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabelBajaPostulante;
-    private javax.swing.JList<String> jListPostulante;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Postulante> jListPostulante;
+    private javax.swing.JScrollPane jScrollPanePostulante;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel<Postulante> modelo;
 }
