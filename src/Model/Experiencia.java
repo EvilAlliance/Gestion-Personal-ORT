@@ -15,7 +15,7 @@ public class Experiencia {
 
     public Experiencia(int nivel, Tema topic) {
         this.setNivel(nivel);
-        this.setTopic(topic);
+        this.setTema(topic);
     }
 
     public int getNivel() {
@@ -26,17 +26,17 @@ public class Experiencia {
         this.nivel = nivel;
     }
 
-    public Tema getTopic() {
+    public Tema getTema() {
         return topic;
     }
 
-    public void setTopic(Tema topic) {
+    public void setTema(Tema topic) {
         this.topic = topic;
     }
 
     @Override
     public String toString() {
-        return this.getTopic() + " (" + this.getNivel() + ")";
+        return this.getTema() + " (" + this.getNivel() + ")";
     }
 
     @Override  
@@ -44,7 +44,7 @@ public class Experiencia {
         boolean equal = false;
         
         if (x instanceof Experiencia){
-            equal = this.getTopic().equals(((Experiencia) x).getTopic());
+            equal = this.getTema().equals(((Experiencia) x).getTema());
         }
         
         return equal;

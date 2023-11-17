@@ -266,9 +266,9 @@ public class AltaPostulanteS extends javax.swing.JFrame {
 
     private void jButtonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMouseClicked
         this.jErrorExperiencia.setText(" ");
-        int index = this.jListExperiencia.getSelectedIndex();
-        if (index != -1) {
-            this.modelo.remove(index);
+        Experiencia selecionado = this.jListExperiencia.getSelectedValue();
+        if (selecionado != null) {
+            this.modelo.removeElement(selecionado);
             this.jListExperiencia.setModel(this.modelo);
         } else {
             this.jErrorExperiencia.setText("Selecione una de las opciones");

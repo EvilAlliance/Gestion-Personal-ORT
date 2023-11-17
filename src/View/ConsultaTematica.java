@@ -5,7 +5,14 @@
 package View;
 
 import Controller.Controller;
+import Model.Experiencia;
+import Model.Postulante;
+import Model.Puesto;
+import Model.Tema;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -29,8 +36,8 @@ public class ConsultaTematica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel = new javax.swing.JLabel();
+        jScrollPaneTematica = new javax.swing.JScrollPane();
         jListTematicas = new javax.swing.JList<>();
         jLabelCantPostulantes = new javax.swing.JLabel();
         jLabelCantPuestos = new javax.swing.JLabel();
@@ -39,6 +46,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
         jTextFieldCantPuestos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -48,10 +56,18 @@ public class ConsultaTematica extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Consulta por Tematica");
+        jLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel.setText("Consulta por Tematica");
 
-        jScrollPane1.setViewportView(jListTematicas);
+        jScrollPaneTematica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
+
+        jListTematicas.setBackground(new java.awt.Color(236, 236, 236));
+        jListTematicas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListTematicasMouseClicked(evt);
+            }
+        });
+        jScrollPaneTematica.setViewportView(jListTematicas);
 
         jLabelCantPostulantes.setText("Postultantes con mayor nivel a 5:");
 
@@ -85,7 +101,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPaneTematica, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelCantPostulantes)
@@ -95,14 +111,14 @@ public class ConsultaTematica extends javax.swing.JFrame {
                                         .addComponent(jTextFieldCantPostulantes, javax.swing.GroupLayout.Alignment.LEADING))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -115,7 +131,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
                         .addComponent(jTextFieldCantPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAtras))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneTematica, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -134,20 +150,61 @@ public class ConsultaTematica extends javax.swing.JFrame {
         Controller.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
 
-    public void reset(){
-        this.jListTematicas.setListData(new String[0]);
+    private void jListTematicasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListTematicasMouseClicked
+        Tema seleccionado = this.jListTematicas.getSelectedValue();
+
+        ArrayList<Puesto> puestos = Controller.getPuestos();
+
+        int contador = 0;
+
+        for (int i = 0; i < puestos.size(); i++) {
+            Tema[] temas = puestos.get(i).getTemasRequeridos();
+            for (int j = 0; j < temas.length; j++) {
+                if (temas[j] == seleccionado) {
+                    contador++;
+                }
+            }
+        }
+
+        this.jTextFieldCantPuestos.setText(contador + "");
+
+        ArrayList<Postulante> postulantes = Controller.getPostulantes();
+
+        int contadorNivel = 0;
+
+        for (int i = 0; i < postulantes.size(); i++) {
+            Experiencia[] temas = postulantes.get(i).getExperiencia();
+            for (int j = 0; j < temas.length; j++) {
+                if (temas[j].getTema() == seleccionado && temas[j].getNivel() > 5) {
+                    contadorNivel++;
+                }
+            }
+        }
+
+        this.jTextFieldCantPostulantes.setText(contadorNivel + "");
+    }//GEN-LAST:event_jListTematicasMouseClicked
+
+    public void reset() {
+        this.modelo = new DefaultListModel<Tema>();
+        this.jListTematicas.setModel(modelo);
         this.jTextFieldCantPostulantes.setText("");
         this.jTextFieldCantPuestos.setText("");
     }
-    
+
+    public void set(ArrayList<Tema> tematicas) {
+        this.modelo.addAll((Collection<Tema>) tematicas);
+        this.jListTematicas.setModel(this.modelo);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabelCantPostulantes;
     private javax.swing.JLabel jLabelCantPuestos;
-    private javax.swing.JList<String> jListTematicas;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Tema> jListTematicas;
+    private javax.swing.JScrollPane jScrollPaneTematica;
     private javax.swing.JTextField jTextFieldCantPostulantes;
     private javax.swing.JTextField jTextFieldCantPuestos;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel<Tema> modelo;
 }

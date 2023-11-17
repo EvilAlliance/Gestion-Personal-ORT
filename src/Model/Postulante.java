@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Postulante extends Persona{
-    
+public class Postulante extends Persona {
+
     private String telefono;
     private String mail;
     private String linkedin;
@@ -57,18 +57,21 @@ public class Postulante extends Persona{
         return this.experiencia;
     }
 
-    public void setEntrevistas(ArrayList<Entrevista> entrevistas){
+    public void setEntrevistas(ArrayList<Entrevista> entrevistas) {
         this.entrevistas = entrevistas;
     }
-    
-    public ArrayList<Entrevista> getEntrevistas(){
+
+    public ArrayList<Entrevista> getEntrevistas() {
         return this.entrevistas;
     }
-    
-    //empiezan los verifiers
 
+    public int getUltimoPuntajeEntrevista() {
+        return Integer.parseInt(this.getEntrevistas().getLast().getPuntaje());
+    }
+
+    //empiezan los verifiers
     public static String verifyTelefono(String phone) {
-        boolean errorType = Verifiers.isNumber(phone)  || phone.equals("");
+        boolean errorType = Verifiers.isNumber(phone) || phone.equals("");
         String errorLength = Verifiers.errorLength2Strings(phone, 9);
 
         return errorType ? errorLength : "Incluye caracteres que no son numeros";
@@ -87,7 +90,6 @@ public class Postulante extends Persona{
     }
 
     //terminan los verifiers
-
     public Postulante(String aName, String aDni, String aHomeDirection, String aPhone, String anEmail, String aLink, String aFormato, Experiencia[] experiencia) {
         super(aName, aDni, aHomeDirection);
         this.setMail(anEmail);
@@ -96,6 +98,4 @@ public class Postulante extends Persona{
         this.setFormato(aFormato);
         this.setExperiencia(experiencia);
     }
-
-    
 }
