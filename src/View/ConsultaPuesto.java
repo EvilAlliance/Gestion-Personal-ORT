@@ -1,11 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import Controller.Controller;
+import Model.CriterioUltimoPuntaje;
+import Model.Puesto;
+import Model.Postulante;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -72,6 +75,11 @@ public class ConsultaPuesto extends javax.swing.JFrame {
         jSpinnerNivel.setBorder(null);
 
         jButtonConsulta.setText("Consultar");
+        jButtonConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonConsultaMouseClicked(evt);
+            }
+        });
 
         jLabelPostulante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelPostulante.setLabelFor(jListPostulante);
@@ -179,10 +187,56 @@ public class ConsultaPuesto extends javax.swing.JFrame {
         Controller.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
 
+    private void jButtonConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultaMouseClicked
+        int nivelSpinner = (int) jSpinnerNivel.getValue();
+
+        String puestoSeleccionado = jListPuestos.getSelectedValue().toString();
+
+        ArrayList<Postulante> postulantesFiltrados = new ArrayList<>();
+
+        for (int i = 0; i < listaPostulante.size(); i++) {
+            Postulante filtrado = listaPostulante.get(i);
+
+            for (int j = 0; j < filtrado.getExperiencia().length; j++) {
+
+                if (filtrado.getExperiencia()[j].getNivel() == nivelSpinner && filtrado.getExperiencia()[j].getTopic().toString().equals(puestoSeleccionado)) {
+                    postulantesFiltrados.add(filtrado);
+                }
+
+            }
+
+        }
+
+        Collections.sort(postulantesFiltrados, new CriterioUltimoPuntaje());
+
+        this.setPostulante(postulantesFiltrados);
+    }//GEN-LAST:event_jButtonConsultaMouseClicked
+
     public void reset() {
-        this.jListPostulante.setListData(new String[0]);
-        this.jListPuestos.setListData(new String[0]);
-        this.jSpinnerNivel.setValue(0);
+        this.jSpinnerNivel.setValue(1);
+        
+        this.modeloPuesto = new DefaultListModel<>();
+        this.jListPuestos.setModel(this.modeloPuesto);
+        
+        this.modeloPost = new DefaultListModel<>();
+        this.jListPostulante.setModel(this.modeloPost);
+    }
+
+    public void set(ArrayList<Puesto> puestoList, ArrayList<Postulante> postulanteList) {
+        this.setPuesto(puestoList);
+
+        this.setPostulante(postulanteList);
+    }
+
+    public void setPuesto(ArrayList<Puesto> puestoList) {
+        this.modeloPuesto.addAll((Collection<Puesto>) puestoList);
+        this.jListPuestos.setModel(this.modeloPuesto);
+    }
+
+    public void setPostulante(ArrayList<Postulante> postulanteList) {
+        this.modeloPost.addAll((Collection<Postulante>) postulanteList);
+        this.jListPostulante.setModel(this.modeloPost);
+        this.listaPostulante = (ArrayList<Postulante>) postulanteList.clone();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -193,11 +247,15 @@ public class ConsultaPuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNivel;
     private javax.swing.JLabel jLabelPostulante;
     private javax.swing.JLabel jLabelPuesto;
-    private javax.swing.JList<String> jListPostulante;
-    private javax.swing.JList<String> jListPuestos;
+    private javax.swing.JList<Postulante> jListPostulante;
+    private javax.swing.JList<Puesto> jListPuestos;
     private javax.swing.JScrollPane jScrollPanePostulante;
     private javax.swing.JScrollPane jScrollPanePuestos;
     private javax.swing.JSeparator jSeparator;
     private javax.swing.JSpinner jSpinnerNivel;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel<Puesto> modeloPuesto;
+    private DefaultListModel<Postulante> modeloPost;
+    private ArrayList<Postulante> listaPostulante;
+
 }

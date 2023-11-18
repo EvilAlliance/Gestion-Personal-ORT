@@ -44,6 +44,6 @@ public class Puesto {
 
     @Override
     public String toString() {
-        return "Puesto: " + this.getNombre() + "\nTipo de Puesto: " + this.getTipo();
+        return "" + this.getNombre();
     }
 }
