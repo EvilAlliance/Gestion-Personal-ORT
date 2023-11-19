@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class RegistroTematica extends javax.swing.JFrame {
 
@@ -42,6 +39,7 @@ public class RegistroTematica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Tematica");
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -173,29 +171,39 @@ public class RegistroTematica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuTematica();
+        Controlador.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
         String nombre = this.jTextFieldNombre.getText();
         String descripcion = this.jTextAreaDescripcion.getText();
-        boolean nombreOK = !nombre.equals("");
         boolean descripcionOK = !descripcion.equals("");
-        if (nombreOK && descripcionOK) {
-            Controller.addTematica(nombre, descripcion);
+        if (verifyNombre(nombre) && descripcionOK) {
+            Controlador.addTematica(nombre, descripcion);
             this.dispose();
         } else {
-            this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");
             this.jErrorDescripcion.setText(descripcionOK ? " " : "No debe estar vacio");
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
+    public boolean verifyNombre(String nombre) {
+        boolean nombreVacio = nombre.equals("");
+
+        if (nombreVacio) {
+            this.jErrorNombre.setText("No debe estar vacio");
+        }
+        String erorrMesage = Controlador.verifyNombreTematica(nombre);
+        this.jErrorNombre.setText(erorrMesage.equals("") ? " " : erorrMesage);
+
+        return !nombreVacio && erorrMesage.equals("");
+    }
 
     private void jTextAreaDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaDescripcionKeyReleased
         this.jErrorDescripcion.setText(!this.jTextAreaDescripcion.getText().equals("") ? " " : "No debe estar vacio");
     }//GEN-LAST:event_jTextAreaDescripcionKeyReleased
 
     private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
-        this.jErrorNombre.setText(!this.jTextFieldNombre.getText().equals("") ? " " : "No debe estar vacio");
+        verifyNombre(this.jTextFieldNombre.getText());
     }//GEN-LAST:event_jTextFieldNombreKeyReleased
 
     public void reset() {

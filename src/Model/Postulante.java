@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Postulante extends Persona {
+public class Postulante extends Persona implements Serializable {
 
     private String telefono;
     private String mail;
@@ -19,7 +20,7 @@ public class Postulante extends Persona {
     public String getMail() {
         return this.mail;
     }
-    
+
     public void setMail(String givenEmail) {
         this.mail = givenEmail;
         //formato mail (yourExample@yourDomain.com || yourExample@yourDomain.net)
@@ -56,25 +57,17 @@ public class Postulante extends Persona {
     public Experiencia[] getExperiencia() {
         return this.experiencia;
     }
-    
-    public ArrayList<Entrevista> getEntrevistas(){
-        return this.entrevistas;
-    }
-    
-    public int getUltimoPuntajeEntrevista(){
-        return Integer.parseInt(this.getEntrevistas().get(this.getEntrevistas().size()-1).getPuntaje());
-    }
-
-    public void setEntrevistas(ArrayList<Entrevista> entrevistas) {
-        this.entrevistas = entrevistas;
-    }
 
     public ArrayList<Entrevista> getEntrevistas() {
         return this.entrevistas;
     }
 
     public int getUltimoPuntajeEntrevista() {
-        return Integer.parseInt(this.getEntrevistas().getLast().getPuntaje());
+        return Integer.parseInt(this.getEntrevistas().get(this.getEntrevistas().size() - 1).getPuntaje());
+    }
+
+    public void setEntrevistas(ArrayList<Entrevista> entrevistas) {
+        this.entrevistas = entrevistas;
     }
 
     //empiezan los verifiers

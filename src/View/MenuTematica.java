@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class MenuTematica extends javax.swing.JFrame {
 
@@ -108,12 +105,12 @@ public class MenuTematica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
         this.setVisible(false);
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -122,12 +119,12 @@ public class MenuTematica extends javax.swing.JFrame {
 
     private void jButtonRegistroTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistroTematicaMouseClicked
         this.setVisible(false);
-        Controller.initRegistroTematica();
+        Controlador.initRegistroTematica();
     }//GEN-LAST:event_jButtonRegistroTematicaMouseClicked
 
     private void jButtonConsultaTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultaTematicaMouseClicked
         this.setVisible(false);
-        Controller.initConsultaTematica();
+        Controlador.initConsultaTematica();
     }//GEN-LAST:event_jButtonConsultaTematicaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,20 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import Model.Entrevistador;
 import Model.Postulante;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class IngresoEntrevista extends javax.swing.JFrame {
 
@@ -54,6 +52,7 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         jErrorComentario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -175,13 +174,12 @@ public class IngresoEntrevista extends javax.swing.JFrame {
                                     .addComponent(jErrorEntrevistador))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jErrorPostulante)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelPostulante)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPanePostulante, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jErrorPostulante)
+                                            .addComponent(jLabelPostulante))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -231,7 +229,7 @@ public class IngresoEntrevista extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuPostulante();
+        Controlador.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
@@ -245,7 +243,8 @@ public class IngresoEntrevista extends javax.swing.JFrame {
         int puntaje = (int) this.jSpinnerPuntaje.getValue();
         boolean puntajeOK = 0 <= puntaje && puntaje <= 100;
         if (entrevistadorOK && postulanteOK && puntajeOK && comentarioOK) {
-            Controller.addEntrevista(this.jListPostulante.getSelectedValue(), this.jListEntrevistador.getSelectedValue(), puntaje + "", this.jTextAreaComentario.getText());
+            JOptionPane.showMessageDialog(this, "Numero de entrevista " + Controlador.getEntrevistaLastIndex());
+            Controlador.addEntrevista(this.jListPostulante.getSelectedValue(), this.jListEntrevistador.getSelectedValue(), puntaje + "", this.jTextAreaComentario.getText());
             this.dispose();
         } else {
             this.jErrorEntrevistador.setText(entrevistadorOK ? " " : "No hay selección");

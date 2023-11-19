@@ -1,16 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
+import Model.CriterioCedula;
+import Model.Entrevista;
+import Model.Experiencia;
+import Model.Postulante;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Cursor;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class HistorialPostulante extends javax.swing.JFrame {
 
@@ -89,6 +100,11 @@ public class HistorialPostulante extends javax.swing.JFrame {
 
         jListPostulantes.setBackground(new java.awt.Color(236, 236, 236));
         jListPostulantes.setPreferredSize(new java.awt.Dimension(330, 303));
+        jListPostulantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListPostulantesMouseClicked(evt);
+            }
+        });
         jScrollPanePostulantes.setViewportView(jListPostulantes);
         jListPostulantes.getAccessibleContext().setAccessibleParent(jListPostulantes);
 
@@ -101,8 +117,18 @@ public class HistorialPostulante extends javax.swing.JFrame {
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.setToolTipText("");
+        jButtonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBuscarMouseClicked(evt);
+            }
+        });
 
         jButtonResetear.setText("Resetear");
+        jButtonResetear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonResetearMouseClicked(evt);
+            }
+        });
 
         jScrollPaneReferencia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
         jScrollPaneReferencia.setViewportBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
@@ -110,31 +136,7 @@ public class HistorialPostulante extends javax.swing.JFrame {
         jTableReferencia.setBackground(new java.awt.Color(236, 236, 236));
         jTableReferencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nro", "Evaluador", "Puntaje", "Comentario"
@@ -185,8 +187,20 @@ public class HistorialPostulante extends javax.swing.JFrame {
 
         jTextFieldLinkedin.setEditable(false);
         jTextFieldLinkedin.setBackground(new java.awt.Color(236, 236, 236));
+        jTextFieldLinkedin.setForeground(new java.awt.Color(0, 0, 255));
         jTextFieldLinkedin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray));
         jTextFieldLinkedin.setFocusable(false);
+        jTextFieldLinkedin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldLinkedinMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextFieldLinkedinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextFieldLinkedinMouseExited(evt);
+            }
+        });
 
         jTextFieldFormato.setEditable(false);
         jTextFieldFormato.setBackground(new java.awt.Color(236, 236, 236));
@@ -333,9 +347,9 @@ public class HistorialPostulante extends javax.swing.JFrame {
                     .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscar)
                     .addComponent(jButtonResetear))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         jLabelPostulantes.getAccessibleContext().setAccessibleDescription("");
@@ -348,8 +362,111 @@ public class HistorialPostulante extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuPostulante();
+        Controlador.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
+
+    private void jListPostulantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListPostulantesMouseClicked
+        Postulante postulante = this.jListPostulantes.getSelectedValue();
+        this.jTextFieldNombre.setText(postulante.getNombre());
+        this.jTextFieldCedula.setText(postulante.getCedula());
+        this.jTextFieldDireccion.setText(postulante.getDireccion());
+        this.jTextFieldTelefono.setText(postulante.getTelefono());
+        this.jTextFieldMail.setText(postulante.getMail());
+        this.jTextFieldLinkedin.setText(postulante.getLinkedin());
+        this.jTextFieldFormato.setText(postulante.getCedula());
+        this.jListExperiencia.setListData(postulante.getExperiencia());
+
+        ArrayList<Entrevista> entrevistas = postulante.getEntrevistas();
+
+        Object[][] rows = new Object[entrevistas.size()][4];
+
+        for (int i = 0; i < entrevistas.size(); i++) {
+            Entrevista entrevista = entrevistas.get(i);
+            rows[i][0] = i + 1;
+            rows[i][1] = entrevista.getEntrevistador();
+            rows[i][2] = entrevista.getPuntaje();
+            rows[i][3] = entrevista.getComentario();
+        }
+
+        this.model.setDataVector(rows, columns);
+    }//GEN-LAST:event_jListPostulantesMouseClicked
+
+    private void jTextFieldLinkedinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldLinkedinMouseClicked
+        String link = this.jTextFieldLinkedin.getText();
+        if (!link.equals("")) {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                try {
+                    Desktop.getDesktop().browse(new URI(link));
+                } catch (URISyntaxException ex) {
+                    JOptionPane.showMessageDialog(this, "Linkedin link no es un link valido");
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Fallo en abrir navegador o no se encontro su navogador predeterminado");
+                }
+            }
+        }
+    }//GEN-LAST:event_jTextFieldLinkedinMouseClicked
+
+    private void jTextFieldLinkedinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldLinkedinMouseEntered
+        this.getRootPane().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.jTextFieldLinkedin.setForeground(new Color(76, 40, 130));
+    }//GEN-LAST:event_jTextFieldLinkedinMouseEntered
+
+    private void jTextFieldLinkedinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldLinkedinMouseExited
+        this.getRootPane().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        this.jTextFieldLinkedin.setForeground(new Color(0, 0, 255));
+    }//GEN-LAST:event_jTextFieldLinkedinMouseExited
+
+    private void jButtonResetearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetearMouseClicked
+        this.jTextFieldBuscar.setText("");
+        Postulante postulante = this.jListPostulantes.getSelectedValue();
+        ArrayList<Entrevista> entrevistas = postulante.getEntrevistas();
+
+        Object[][] rows = new Object[entrevistas.size()][4];
+
+        for (int i = 0; i < entrevistas.size(); i++) {
+            Entrevista entrevista = entrevistas.get(i);
+            rows[i][0] = i + 1;
+            rows[i][1] = entrevista.getEntrevistador();
+            rows[i][2] = entrevista.getPuntaje();
+            rows[i][3] = entrevista.getComentario();
+        }
+
+        this.model.setDataVector(rows, columns);
+
+    }//GEN-LAST:event_jButtonResetearMouseClicked
+
+    private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
+        String buscador = this.jTextFieldBuscar.getText();
+        if (!buscador.equals("") && this.model.getRowCount() > 0) {
+            Postulante postulante = this.jListPostulantes.getSelectedValue();
+            ArrayList<Entrevista> entrevistas = postulante.getEntrevistas();
+
+            ArrayList<Object[]> rows = new ArrayList<Object[]>();
+            int defase = 0;
+
+            for (int i = 0; i < entrevistas.size(); i++) {
+                Entrevista entrevista = entrevistas.get(i);
+                String comentario = entrevista.getComentario();
+                Object[] row = new Object[4];
+                if (comentario.indexOf(buscador) != -1) {
+                    row[0] = i + 1 - defase;
+                    row[1] = entrevista.getEntrevistador();
+                    row[2] = entrevista.getPuntaje();
+                    row[3] = "<html>" + comentario.replace(buscador, "<span style=\"color: red;\">" + buscador + "</span>") + "</html>";
+                    rows.add(row);
+                } else {
+                    defase++;
+                }
+            }
+
+            Object[][] rowsCasting = new Object[rows.size()][4];
+            for (int i = 0; i < rows.size(); i++) {
+                rowsCasting[i] = (Object[]) rows.get(i);
+            }
+
+            this.model.setDataVector(rowsCasting, columns);
+        }
+    }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     public void reset() {
         this.jTextFieldCedula.setText("");
@@ -359,10 +476,20 @@ public class HistorialPostulante extends javax.swing.JFrame {
         this.jTextFieldNombre.setText("");
         this.jTextFieldTelefono.setText("");
         this.jTextFieldFormato.setText("");
-        this.jListPostulantes.setListData(new String[0]);
-        this.jListExperiencia.setListData(new String[0]);
+        this.jListPostulantes.setListData(new Postulante[0]);
+        this.jListExperiencia.setListData(new Experiencia[0]);
         this.jTableReferencia.removeAll();
         this.jTextFieldBuscar.setText("");
+        this.model = new DefaultTableModel();
+        this.model.setColumnIdentifiers(this.columns);
+        this.jTableReferencia.setModel(this.model);
+    }
+
+    public void set(ArrayList<Postulante> postulantes) {
+        Collections.sort(postulantes, new CriterioCedula());
+        DefaultListModel<Postulante> modelo = new DefaultListModel<Postulante>();
+        modelo.addAll((Collection<Postulante>) postulantes);
+        this.jListPostulantes.setModel(modelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -379,8 +506,8 @@ public class HistorialPostulante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelPostulantes;
     private javax.swing.JLabel jLabelTelefono;
-    private javax.swing.JList<String> jListExperiencia;
-    private javax.swing.JList<String> jListPostulantes;
+    private javax.swing.JList<Experiencia> jListExperiencia;
+    private javax.swing.JList<Postulante> jListPostulantes;
     private javax.swing.JScrollPane jScrollPaneExperiencia;
     private javax.swing.JScrollPane jScrollPanePostulantes;
     private javax.swing.JScrollPane jScrollPaneReferencia;
@@ -395,4 +522,6 @@ public class HistorialPostulante extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
+    private DefaultTableModel model = new DefaultTableModel();
+    private Object[] columns = {"Nro", "Evaluador", "Puntaje", "Comentario"};
 }

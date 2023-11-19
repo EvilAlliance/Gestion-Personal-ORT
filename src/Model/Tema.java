@@ -1,11 +1,13 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Pedro Chialanza (302782)
  * @author Leandro Meneses (305998)
  */
-public class Tema {
+public class Tema implements Serializable {
 
     private String nombre;
     private String descripcion;

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import Model.Postulante;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -13,7 +9,8 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class BajaPostulante extends javax.swing.JFrame {
 
@@ -41,6 +38,7 @@ public class BajaPostulante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Baja Postulante");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -87,17 +85,15 @@ public class BajaPostulante extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPanePostulante)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPanePostulante)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(71, 71, 71)
-                                .addComponent(jLabelBajaPostulante)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabelBajaPostulante))
+                            .addComponent(jLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,14 +131,14 @@ public class BajaPostulante extends javax.swing.JFrame {
     }
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuPostulante();
+        Controlador.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     private void jListPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListPostulanteMouseClicked
         int clicks = evt.getClickCount();
         if (clicks == 2) {
             Postulante postulante = this.jListPostulante.getSelectedValue();
-            Controller.bajaPostulante(postulante);
+            Controlador.bajaPostulante(postulante);
             this.modelo.removeElement(postulante);
             this.jListPostulante.setModel(this.modelo);
         }

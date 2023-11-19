@@ -1,13 +1,14 @@
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class AltaPostulanteP extends javax.swing.JFrame {
 
@@ -57,6 +58,7 @@ public class AltaPostulanteP extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alta Postulante");
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -337,7 +339,7 @@ public class AltaPostulanteP extends javax.swing.JFrame {
 
         if (nombreOK && cedulaOK && direccionOK && telefonoOk && mailOK && linkedinOK && fomatoOK) {
             this.setVisible(false);
-            Controller.nextAltaPostulante(false);
+            Controlador.nextAltaPostulante(false);
         }
     }//GEN-LAST:event_jButtonSiguienteMouseClicked
 
@@ -378,41 +380,41 @@ public class AltaPostulanteP extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMixtoMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-            Controller.initMenuPostulante();
+            Controlador.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     public boolean verifyNombre() {
-        String nombreError = Controller.verifyPersonaNombre(this.jTextFieldNombre.getText());
+        String nombreError = Controlador.verifyPersonaNombre(this.jTextFieldNombre.getText());
         this.jErrorNombre.setText(nombreError.equals("") ? " " : nombreError);
         return nombreError.equals("");
     }
 
     public boolean verifyCedula() {
-        String cedulaError = Controller.verifyPersonaCedula(this.jTextFieldCedula.getText());
+        String cedulaError = Controlador.verifyPersonaCedula(this.jTextFieldCedula.getText());
         this.jErrorCedula.setText(cedulaError.equals("") ? " " : cedulaError);
         return cedulaError.equals("");
     }
 
     public boolean verifyDireccion() {
-        String direccionError = Controller.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
+        String direccionError = Controlador.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
         this.jErrorDireccion.setText(direccionError.equals("") ? " " : direccionError);
         return direccionError.equals("");
     }
 
     public boolean verifyTelefono() {
-        String telefonoError = Controller.verifyPostulanteTelefono(this.jTextFieldTelefono.getText());
+        String telefonoError = Controlador.verifyPostulanteTelefono(this.jTextFieldTelefono.getText());
         this.jErrorTelefono.setText(telefonoError.equals("") ? " " : telefonoError);
         return telefonoError.equals("");
     }
 
     public boolean verifyMail() {
-        String mailError = Controller.verifyPostulanteMail(this.jTextFieldMail.getText());
+        String mailError = Controlador.verifyPostulanteMail(this.jTextFieldMail.getText());
         this.jErrorMail.setText(mailError.equals("") ? " " : mailError);
         return mailError.equals("");
     }
 
     public boolean verifyLinkedin() {
-        String linkedinError = Controller.verifyPostulanteLinkedin(this.jTextFieldLinkedin.getText());
+        String linkedinError = Controlador.verifyPostulanteLinkedin(this.jTextFieldLinkedin.getText());
         this.jErrorLinkedin.setText(linkedinError.equals("") ? " " : linkedinError);
         return linkedinError.equals("");
     }
@@ -426,7 +428,7 @@ public class AltaPostulanteP extends javax.swing.JFrame {
     public void reset() {
         this.jTextFieldCedula.setText("");
         this.jTextFieldDireccion.setText("");
-        this.jTextFieldLinkedin.setText("");
+        this.jTextFieldLinkedin.setText("https://www.linkedin.com/");
         this.jTextFieldMail.setText("");
         this.jTextFieldNombre.setText("");
         this.jTextFieldTelefono.setText("");

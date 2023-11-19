@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class RegistroEvaluador extends javax.swing.JFrame {
 
@@ -46,6 +43,7 @@ public class RegistroEvaluador extends javax.swing.JFrame {
         jButtonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -89,8 +87,8 @@ public class RegistroEvaluador extends javax.swing.JFrame {
         jTextFieldCedula.setBackground(new java.awt.Color(236, 236, 236));
         jTextFieldCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.lightGray));
         jTextFieldCedula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldCedulaKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldCedulaKeyReleased(evt);
             }
         });
 
@@ -211,7 +209,7 @@ public class RegistroEvaluador extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
@@ -221,10 +219,6 @@ public class RegistroEvaluador extends javax.swing.JFrame {
     private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
         this.verifyNombre();
     }//GEN-LAST:event_jTextFieldNombreKeyReleased
-
-    private void jTextFieldCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCedulaKeyPressed
-        this.verifyCedula();
-    }//GEN-LAST:event_jTextFieldCedulaKeyPressed
 
     private void jTextFieldDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDireccionKeyReleased
         this.verifyDireccion();
@@ -241,10 +235,14 @@ public class RegistroEvaluador extends javax.swing.JFrame {
         boolean anoOK = this.verifyAno();
 
         if (nombreOK && cedulaOK && direccionOK && anoOK) {
-            Controller.addEvaluador(this.jTextFieldNombre.getText(), this.jTextFieldCedula.getText(), this.jTextFieldDireccion.getText(), this.jTextFieldAno.getText());
+            Controlador.addEvaluador(this.jTextFieldNombre.getText(), this.jTextFieldCedula.getText(), this.jTextFieldDireccion.getText(), this.jTextFieldAno.getText());
             this.dispose();
         }
     }//GEN-LAST:event_jButtonRegistrarMouseClicked
+
+    private void jTextFieldCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCedulaKeyReleased
+        this.verifyCedula();
+}//GEN-LAST:event_jTextFieldCedulaKeyReleased
 
     public void reset() {
         this.jTextFieldNombre.setText("");
@@ -258,25 +256,25 @@ public class RegistroEvaluador extends javax.swing.JFrame {
     }
 
     public boolean verifyNombre() {
-        String nombreE = Controller.verifyPersonaNombre(this.jTextFieldNombre.getText());
+        String nombreE = Controlador.verifyPersonaNombre(this.jTextFieldNombre.getText());
         this.jErrorNombre.setText(nombreE.equals("") ? " " : nombreE);
         return nombreE.equals("");
     }
 
     public boolean verifyCedula() {
-        String cedulaE = Controller.verifyPersonaCedula(this.jTextFieldCedula.getText());
+        String cedulaE = Controlador.verifyPersonaCedula(this.jTextFieldCedula.getText());
         this.jErrorCedula.setText(cedulaE.equals("") ? " " : cedulaE);
         return cedulaE.equals("");
     }
 
     public boolean verifyDireccion() {
-        String direccionE = Controller.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
+        String direccionE = Controlador.verifyPersonaDireccion(this.jTextFieldDireccion.getText());
         this.jErrorDireccion.setText(direccionE.equals("") ? " " : direccionE);
         return direccionE.equals("");
     }
 
     public boolean verifyAno() {
-        String anoE = Controller.verifyEntrevistadorAno(this.jTextFieldAno.getText());
+        String anoE = Controlador.verifyEntrevistadorAno(this.jTextFieldAno.getText());
         this.jErrorAno.setText(anoE.equals("") ? " " : anoE);
         return anoE.equals("");
     }

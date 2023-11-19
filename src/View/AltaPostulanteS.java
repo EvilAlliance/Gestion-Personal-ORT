@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import Model.Tema;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,7 +11,8 @@ import Model.Experiencia;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class AltaPostulanteS extends javax.swing.JFrame {
 
@@ -204,12 +205,12 @@ public class AltaPostulanteS extends javax.swing.JFrame {
 
     private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
         this.setVisible(false);
-        Controller.initAltaPostulante(false);
+        Controlador.initAltaPostulante(false);
     }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.disposeAltaPostulante();
-        Controller.initMenuPostulante();
+        Controlador.disposeAltaPostulante();
+        Controlador.initMenuPostulante();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistrarMouseClicked
@@ -222,14 +223,13 @@ public class AltaPostulanteS extends javax.swing.JFrame {
                 experiencia[i] = (Experiencia) experienciaE[i];
             }
 
-            Controller.addPostulante(
-                    Controller.getPostulanteNombre(),
-                    Controller.getPostulanteCedula(),
-                    Controller.getPostulanteDireccion(),
-                    Controller.getPostulanteTelefono(),
-                    Controller.getPostulanteMail(),
-                    Controller.getPostulanteLinkedin(),
-                    Controller.getPostulanteFormato(),
+            Controlador.addPostulante(Controlador.getPostulanteNombre(),
+                    Controlador.getPostulanteCedula(),
+                    Controlador.getPostulanteDireccion(),
+                    Controlador.getPostulanteTelefono(),
+                    Controlador.getPostulanteMail(),
+                    Controlador.getPostulanteLinkedin(),
+                    Controlador.getPostulanteFormato(),
                     experiencia
             );
             this.dispose();

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import Model.Experiencia;
 import Model.Postulante;
 import Model.Puesto;
@@ -16,7 +12,8 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author Kurama
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class ConsultaTematica extends javax.swing.JFrame {
 
@@ -46,6 +43,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
         jTextFieldCantPuestos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -147,13 +145,13 @@ public class ConsultaTematica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuTematica();
+        Controlador.initMenuTematica();
     }//GEN-LAST:event_formWindowClosed
 
     private void jListTematicasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListTematicasMouseClicked
         Tema seleccionado = this.jListTematicas.getSelectedValue();
 
-        ArrayList<Puesto> puestos = Controller.getPuestos();
+        ArrayList<Puesto> puestos = Controlador.getPuestos();
 
         int contador = 0;
 
@@ -168,7 +166,7 @@ public class ConsultaTematica extends javax.swing.JFrame {
 
         this.jTextFieldCantPuestos.setText(contador + "");
 
-        ArrayList<Postulante> postulantes = Controller.getPostulantes();
+        ArrayList<Postulante> postulantes = Controlador.getPostulantes();
 
         int contadorNivel = 0;
 

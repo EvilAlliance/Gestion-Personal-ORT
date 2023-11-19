@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class MenuPostulante extends javax.swing.JFrame {
 
@@ -132,27 +129,27 @@ public class MenuPostulante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
         this.setVisible(false);
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
     private void jButtonAltaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAltaPostulanteMouseClicked
         this.setVisible(false);
-        Controller.initAltaPostulante(true);
+        Controlador.initAltaPostulante(true);
     }//GEN-LAST:event_jButtonAltaPostulanteMouseClicked
 
     private void jButtonBajaPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBajaPostulanteMouseClicked
         this.setVisible(false);
-        Controller.initBajaPostulante();
+        Controlador.initBajaPostulante();
     }//GEN-LAST:event_jButtonBajaPostulanteMouseClicked
 
     private void jButtonHistorialPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHistorialPostulanteMouseClicked
         this.setVisible(false);
-        Controller.initHistoriaPostulante();
+        Controlador.initHistoriaPostulante();
     }//GEN-LAST:event_jButtonHistorialPostulanteMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -161,7 +158,7 @@ public class MenuPostulante extends javax.swing.JFrame {
 
     private void jButtonIngresoEntrevistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIngresoEntrevistaMouseClicked
         this.setVisible(false);
-        Controller.initIngresoEntrevista();
+        Controlador.initIngresoEntrevista();
     }//GEN-LAST:event_jButtonIngresoEntrevistaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

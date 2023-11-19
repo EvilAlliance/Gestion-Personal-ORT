@@ -1,10 +1,13 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
-public class Persona {
+public class Persona implements Serializable {
 
     private String nombre;
     private String cedula;
@@ -58,7 +61,7 @@ public class Persona {
         boolean minLength = homeDirectionP.length > 1 && homeDirectionP[homeDirectionP.length - 1].length() <= 4 && Verifiers.isNumber(homeDirectionP[homeDirectionP.length - 1]) && homeDirectionP[0].length() > 0;
         return minLength ? "" : "Formato: <Nombre> <Numero>";
     }
-    
+
     @Override
     public String toString() {
         return this.getNombre() + " (" + this.getCedula() + ")";

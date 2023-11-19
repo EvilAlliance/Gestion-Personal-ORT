@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class MenuPuesto extends javax.swing.JFrame {
 
@@ -108,12 +105,12 @@ public class MenuPuesto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
         this.setVisible(false);
-        Controller.init();
+        Controlador.init();
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -122,12 +119,12 @@ public class MenuPuesto extends javax.swing.JFrame {
 
     private void jButtonRegistroPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegistroPuestoMouseClicked
         this.setVisible(false);
-        Controller.initRegistroPuesto();
+        Controlador.initRegistroPuesto();
     }//GEN-LAST:event_jButtonRegistroPuestoMouseClicked
 
     private void jButtonConsultaPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultaPuestoMouseClicked
         this.setVisible(false);
-        Controller.initConsultaPuesto();
+        Controlador.initConsultaPuesto();
     }//GEN-LAST:event_jButtonConsultaPuestoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

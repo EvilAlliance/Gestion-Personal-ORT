@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import java.awt.Color;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -123,22 +120,22 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButtonTematicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTematicaMouseClicked
         this.setVisible(false);
-        Controller.initMenuTematica();
+        Controlador.initMenuTematica();
     }//GEN-LAST:event_jButtonTematicaMouseClicked
 
     private void jButtonPuestoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPuestoMouseClicked
         this.setVisible(false);
-        Controller.initMenuPuesto();
+        Controlador.initMenuPuesto();
     }//GEN-LAST:event_jButtonPuestoMouseClicked
 
     private void jButtonPostulanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPostulanteMouseClicked
         this.setVisible(false);
-        Controller.initMenuPostulante();
+        Controlador.initMenuPostulante();
     }//GEN-LAST:event_jButtonPostulanteMouseClicked
 
     private void jButtonEvaluadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEvaluadorMouseClicked
         this.setVisible(false);
-        Controller.initRegistroEvaluador();
+        Controlador.initRegistroEvaluador();
 }//GEN-LAST:event_jButtonEvaluadorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.Controller;
+import Controller.Controlador;
 import Model.Tema;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -15,7 +11,8 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
 public class RegistroPuesto extends javax.swing.JFrame {
 
@@ -53,8 +50,10 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jErrorTipo = new javax.swing.JLabel();
         jErrorTema = new javax.swing.JLabel();
         jButtomRegistrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -157,6 +156,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setText("Doble Click para agregar y eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +188,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jRadioButtonMixto))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 14, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jErrorTipo)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -198,6 +200,8 @@ public class RegistroPuesto extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(jButtonAtras)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel1)
+                                            .addGap(14, 14, 14)
                                             .addComponent(jButtomRegistrar))))))
                         .addContainerGap())))
         );
@@ -230,8 +234,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAtras)
-                    .addComponent(jButtomRegistrar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(jButtomRegistrar)
+                    .addComponent(jLabel1))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,7 +247,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Controller.initMenuPuesto();
+        Controlador.initMenuPuesto();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtrasMouseClicked
@@ -250,7 +255,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAtrasMouseClicked
 
     private void jButtomRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtomRegistrarMouseClicked
-        boolean nombreOK = !this.jTextFieldNombre.getText().equals("");
+        boolean nombreOK = this.verifyNombre(this.jTextFieldNombre.getText());
         boolean tipoOK = this.buttonGroupTipo.getSelection() != null;
         boolean temaOK = this.jListTemaSelected.getModel().getSize() > 0;
 
@@ -261,16 +266,27 @@ public class RegistroPuesto extends javax.swing.JFrame {
             for (int i = 0; i < topic.length; i++) {
                 topic[i] = (Tema) experienciaE[i];
             }
-            
-            Controller.addPuesto(this.jTextFieldNombre.getText(),this.getFormato(), topic);
+
+            Controlador.addPuesto(this.jTextFieldNombre.getText(), this.getFormato(), topic);
             this.dispose();
         } else {
-            this.jErrorNombre.setText(nombreOK ? " " : "No debe estar vacio");
             this.jErrorTipo.setText(tipoOK ? " " : "Selecione una opcion");
             this.jErrorTema.setText(temaOK ? " " : "Seleccione un tema");
 
         }
     }//GEN-LAST:event_jButtomRegistrarMouseClicked
+
+    public boolean verifyNombre(String nombre) {
+        boolean nombreVacio = nombre.equals("");
+
+        if (nombreVacio) {
+            this.jErrorNombre.setText("No debe estar vacio");
+        }
+        String erorrMesage = Controlador.verifyNombrePuesto(nombre);
+        this.jErrorNombre.setText(erorrMesage.equals("") ? " " : erorrMesage);
+
+        return !nombreVacio && erorrMesage.equals("");
+    }
 
     private void jRadioButtonRemotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonRemotoMouseClicked
         this.jErrorTipo.setText(" ");
@@ -285,7 +301,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMixtoMouseClicked
 
     private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
-        this.jErrorNombre.setText(!this.jTextFieldNombre.getText().equals("") ? " " : "No debe estar vacio");
+        this.verifyNombre(this.jTextFieldNombre.getText());
     }//GEN-LAST:event_jTextFieldNombreKeyReleased
 
     private void jListTemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListTemaMouseClicked
@@ -350,12 +366,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jErrorNombre;
     private javax.swing.JLabel jErrorTema;
     private javax.swing.JLabel jErrorTipo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelRegistroPuesto;
     private javax.swing.JLabel jLabelTema;
     private javax.swing.JLabel jLabelTipo;
-    private javax.swing.JList<Tema> jListTema;
-    private javax.swing.JList<Tema> jListTemaSelected;
+    private javax.swing.JList<Model.Tema> jListTema;
+    private javax.swing.JList<Model.Tema> jListTemaSelected;
     private javax.swing.JRadioButton jRadioButtonMixto;
     private javax.swing.JRadioButton jRadioButtonPresencial;
     private javax.swing.JRadioButton jRadioButtonRemoto;

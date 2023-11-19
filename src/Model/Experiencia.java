@@ -1,14 +1,13 @@
 package Model;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import java.io.Serializable;
+
 /**
  *
- * @author chial
+ * @author Pedro Chialanza (302782)
+ * @author Leandro Meneses (305998)
  */
-public class Experiencia {
+public class Experiencia implements Serializable {
 
     private int nivel;
     private Tema topic;
@@ -39,14 +38,14 @@ public class Experiencia {
         return this.getTema() + " (" + this.getNivel() + ")";
     }
 
-    @Override  
-    public boolean equals(Object x){
+    @Override
+    public boolean equals(Object x) {
         boolean equal = false;
-        
-        if (x instanceof Experiencia){
+
+        if (x instanceof Experiencia) {
             equal = this.getTema().equals(((Experiencia) x).getTema());
         }
-        
+
         return equal;
     }
 }
